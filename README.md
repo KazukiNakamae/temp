@@ -14,7 +14,7 @@ If you have the same purpose with the above cases, you can junp to [the section 
 We demonstrate the simple example.
 Before that, you have to build the environment according to [the section of Requirement](#Requirement)
 
-1. Download MaChIAto with example files by
+#### 1. Download MaChIAto with example files by
 
 clicking "Download ZIP".
 ![download_zip.png](https://github.com/KazukiNakamae/temp/blob/temp-images/download_zip.png)
@@ -25,13 +25,13 @@ Or, enter the folowing command terminal.
 git clone https://github.com/KazukiNakamae/MaChIAto.git;
 ```
 
-1. Open terminal and go the directory.
+#### 1. Open terminal and go the directory.
 
 ```bash
 cd <...>/MaChIAto
 ```
 
-1. Re-classify the allele frequency table derived from CRISPResso2.
+#### 1. Re-classify the allele frequency table derived from CRISPResso2.
 
 ```bash
 source activate MaChIAto_env; # *You do not need enter it again once you did it.
@@ -58,13 +58,17 @@ python MaChIAto/MaChIAto.py -ccf <Alleles_frequency_table.zip of the CRISPResso2
 
 *The case of the knock-out and knock-in is shown in the section of [MaChIAto_(MaChIAto Classifier)](#MaChIAto_(MaChIAto Classifier)).
 
-1. Check the classification result.
+#### 1. Check the classification result.
 
 You can get the classification result of the editing. The result is visualized as the pie chart based on the ALL_dataframe,txt.
 
 We provide the detailed description how to read them in the section of [MaChIAtoClassifier result](#MaChIAtoClassifier_Result).
 
-1. Get local alignment and the mutation profiling.
+# Quick Start (Optional)
+
+MaChIAto can profile and visualize the MaChIAto result using MaChIAto Aligner, MaChIAto Analyzer, and MaChIAto Reviewer. 
+
+1. Get local alignment and the mutation profiling using MaChIAto Aligner.
 
 ```bash
 source activate MaChIAto_Aligner_env; # *You do not need enter it again once you did it.
@@ -134,6 +138,9 @@ Rscript MaChIAto_Reviewer/MaChIAtoReviewer.R \
 <the prefix of MaChIAto Aligner result> \
 <directory of collect_MaChIAto_data.py> \
 <output directory>;
+
+conda deactivate;
+```
 
 1. Check the mutation profile.
 
