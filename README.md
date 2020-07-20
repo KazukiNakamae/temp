@@ -17,6 +17,7 @@ Before that, you have to build the environment according to [the section of Prep
 #### 1. Download MaChIAto with example files
 
 Click "Download ZIP".
+
 ![download_zip.png](https://github.com/KazukiNakamae/temp/blob/temp-images/download_zip.png)
 
 Or, enter the folowing command terminal.
@@ -52,7 +53,8 @@ python MaChIAto/MaChIAto.py \
 conda deactivate;
 ```
 
-The other parameters varies per experiment type {knock-out, homology-based knokc-in, Prime Editing}
+The other parameters varies per experiment type {knock-out, homology-based knokc-in, Prime Editing}.
+
 The example is for the knock-out analysis.
 
 ##### The case of knock-out
@@ -75,7 +77,7 @@ We provide the detailed description how to read them in the section of [MaChIAto
 
 MaChIAto can profile and visualize the MaChIAto result using MaChIAto Aligner, MaChIAto Analyzer, and MaChIAto Reviewer. 
 
-1. Get local alignment and the mutation profiling using MaChIAto Aligner.
+#### 1. Get local alignment and the mutation profiling using MaChIAto Aligner.
 
 ```bash
 source activate MaChIAto_Aligner_env; # *You do not need enter it again once you did it.
@@ -95,13 +97,13 @@ conda deactivate;
 If your donor insert has the extra sequence in the outside of homology arm, you should enter it.
 Please refer to the section of [MaChIAtoAligner](#MaChIAtoAligner).
 
-1. Check the alignment result.
+#### 1. Check the alignment result.
 
 You can get the local alignment of the editing. The result is visualized as the map.
 
 We provide the detailed description how to read them in the section of [MaChIAtoAligner result](#MaChIAtoAligner_Result).
 
-1. Aggregate the multiple data.
+#### 1. Aggregate the multiple data.
 
 If you have multiple data (n>3) to profile the characteristics, you should aggregate the data using the following command.
 
@@ -121,7 +123,7 @@ conda deactivate;
 It is used for the knock-out analysis. The calculation target for MaChIAto Analyzer/Reviewer is protpspacer.
 You can target the homology arm and RT template using another command. Please see the section of [MaChIAtoAnalyzer](#MaChIAtoAnalyzer).
 
-1. Investivate the relationship with (epi-)genomic context
+#### 1. Investivate the relationship with (epi-)genomic context
 
 You can see the correlation with the >70 (epi-)genomic context using MaChIAto Analyzer.
 
@@ -138,13 +140,13 @@ conda deactivate;
 MaChIAtoAnalyzer basically use > 70 genomic context.
 If you want to use epigenomic context or other context, please see the section of [MaChIAtoAnalyzer](#MaChIAtoAnalyzer).
 
-1. Check the correlation.
+#### 1. Check the correlation.
 
 You can get the correlation between the editing efficacy and the context. The result is visualized as the scatter plot.
 
 We provide the detailed description how to read them in the section of [MaChIAtoAnalyzer result](#MaChIAtoAnalyzer_Result).
 
-1. Profile the mutation tendency.
+#### 1. Profile the mutation tendency.
 
 
 ```bash
@@ -160,7 +162,7 @@ Rscript MaChIAto_Reviewer/MaChIAtoReviewer.R \
 conda deactivate;
 ```
 
-1. Check the mutation profile.
+#### 1. Check the mutation profile.
 
 You can get the local alignment of the editing. The result is visualized as the bar plot and pie chart.
 
@@ -192,7 +194,7 @@ sudo xcodebuild -license;
 
 ### Build the environment using conda
 
-#### For MaChIAto_(MaChIAto Classifier)
+#### Environment for MaChIAto_(MaChIAto Classifier)
 ```bash
 conda create --name MaChIAto_env;
 source activate MaChIAto_env;
@@ -202,7 +204,7 @@ pip install regex tqdm argparse biopython numpy matplotlib GPy gpyopt datetime p
 conda deactivate;
 ```
 
-#### For MaChIAtoAligner
+#### Environment for MaChIAtoAligner
 ```bash
 cd /Volumes/databank2;
 conda update -n base -c defaults conda;
@@ -212,7 +214,7 @@ conda install -c bioconda python=3.8 bwa=0.7.17 samtools=1.9;
 conda deactivate;
 ```
 
-#### For MaChIAtoAnalyzer
+#### Environment for MaChIAtoAnalyzer
 ```bash
 conda create --name MaChIAto_Analyzer_env;
 source activate MaChIAto_Analyzer_env;
@@ -223,7 +225,7 @@ pip install numpy regex tqdm pandas;
 conda deactivate;
 ```
 
-#### For MaChIAtoReviewer
+#### Environment for MaChIAtoReviewer
 ```bash
 conda create -n MaChIAto_Reviewer_env --clone MaChIAto_Aligner_env;
 source activate MaChIAto_Reviewer_env;
@@ -248,13 +250,43 @@ cd $WORKING_DIRECTORY
 conda deactivate;
 ```
 
+# Usage
 
+## Usage of MaChIAto Classifier
 
+**-m**, **--mode** <str>: This parameter allows for the specification of type of analysis: “CRISPResso” and “CRISPResso2” is allowed in the latest version
 
+**-a**, **--amplicon_seq** <str>: This parameter allows the user to enter the amplicon sequence used for the CRISPResso. The length should be >105bp due to setting for the other parameter.
 
+**-g**, **--guide_seq** <str>help="This parameter allows for the specification of the sgRNA sequence used for the CRISPResso. The length of sequence should be 20nt without PAM. The MaChIAto convention is to depict the expected cleavage position using the value of the parameter 3 nt 3' from the end of the guide.", required=True)
 
+**-cf**, **--crispreeso_file**, type=str : This parameter allows for the specification of the “Alleles_frequency_table.txt” from CRISPResso. When this parameter is used, “CRISPResso” should be entered as -m parameter.', (default: "./Alleles_frequency_table.txt") (optional)
 
+**-ccf**, **--crispreeso2_file**, type=str : This parameter allows for the specification of the “Alleles_frequency_table.zip” from CRISPResso2. When this parameter is used, “CRISPResso2” should be entered as -m parameter.', (default: "./Alleles_frequency_table.zip") (optional)
 
+**-d**, **--donor_seq** <str>: This parameter allows for the specification of the expected HDR amplicon used for the CRISPResso. The length of sequence should be >12bp in knock-out/knock-in analysis. In knock-out analysis, this parameter should not be entered, and then the value will be given fake parameter (“TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT”) and some internal settings is changed for knock-out analysis. However, fake parameter will be poly-C|G|A if amplicon sequence contains poly-T sequence.', (default: "") (optional)
+
+**-e**, **--expected_ki_amplicon_seq** <str>: This parameter allows for the specification of the expected knock-in amplicon sequence which used for the CRISPResso after HDR. The length of sequence should be >12bp. In knock-out analysis, this parameter should not be entered, and then the value will be given fake parameter including fake donor sequence and some internal settings is changed for knock-out analysis.', (default: "") (optional)
+
+**-o**, **--output_folder** <str>: This parameter allows for the specification of the output directory to use for the analysis (default: current directory)', (default: "./") (optional)
+
+**-lh**, **--length_left_homologyarm** <int>: This parameter allows for the specification of the length of 5’ homology arm (default: 20). The length of sequence should be >17bp, and the flanking sequence with the homology arm needs length of >24bp in the expected amplicon sequence.', (default: 20) (optional)
+
+**-rh**, **--length_right_homologyarm** <int>: This parameter allows for the specification of the length of 3’ homology arm (default: 20). The length of sequence should be >17bp, and the flanking sequence with the homology arm needs length of >24bp in the expected amplicon sequence.', (default: 20) (optional)
+
+**-cn**, **--location_comp_nick** <int>: This parameter allows for the specification of the complementary strand nick location [3prime direction is +] (default: 90). This parameter is used in the prime editing and should be over the length of homology arm to which the nickase is adjacent', (default: 90) (optional)
+
+**-n**, **--name**  : This parameter allows for the specification of the name which will be included output directory (default: “untitled-X”). If MaChIAto Analyzer and MaChIAto Reviewer will be used in the following analysis, the value should be “<target_name>-<sample label >” (e.g. DBF4B-C) and underbar "_" should not be used', (default: "untitled-X") (optional)
+
+**--primeediting_analysis** : Re-classify the data as prime editing analysis. This option forces the setting to change for knock-out analysis.', action='store_true (optional)
+
+**--force_knockout_analysis** : Usually, MaChIAto re-classify the data as knock-in analysis. This option forces the setting to change for knock-out analysis. Under this mode, the length of indicator on knock-in donor is maximum value, and threshold value for alignment of knock-in sequence is 1.0. If this parameter is not entered, MaChIAto can automatically set up this mode by finding some characteristics of knock-out sample. For example, MaChIAto checks that there is no donor sequence or expected knock-in sequence as input, and there is less 3 kinds HDR variants among input data.', action='store_true (optional)
+
+**--skip_optimization** : Usually, MaChIAto run Bayesian optimization for finding the optimized setting. This option allows MaChIAto to skip the process of optimization. The option is made for debugging. So, the option should not be used in usual analysis. However, if the optimization process disturbs an accurate analysis, this option might be useful.', action='store_true (optional)
+
+**--copy_optimization** : Usually, MaChIAto run Bayesian optimization for finding the optimized setting. This option allows MaChIAto to use the provided optimization data instead of the optimization. If you analize NGS data with the setting of previous analized data, this option is useful. Espesially, in substitution editing, we can reccomend to apply the option to negative/positive control sample. However, you should understand that a classification error might frequently occurs.', action='store_true (optional)
+
+**--provided_optimization_file** : This parameter allows for the specification of the “MaChIAto_optimized_param.csv” from the analized MaChIAto folder. When this parameter is used, --copy_optimization parameter is required.', (default: "./MaChIAto_optimized_param.csv") (optional)
 
 ##### The case of knock-out
 ```bash
@@ -322,26 +354,7 @@ python MaChIAto/MaChIAto.py
 -g <protospaser sequence>;
 ```
 
-		parser.add_argument('-m','--mode', type=str,  help='This parameter allows for the specification of type of analysis: “CRISPResso” and “CRISPResso2” is allowed in the latest version', required=True)
-		parser.add_argument('-a','--amplicon_seq', type=str,  help='This parameter allows the user to enter the amplicon sequence used for the CRISPResso. The length should be >105bp due to setting for the other parameter.', required=True)
-		parser.add_argument('-g','--guide_seq', type=str,  help="This parameter allows for the specification of the sgRNA sequence used for the CRISPResso. The length of sequence should be 20nt without PAM. The MaChIAto convention is to depict the expected cleavage position using the value of the parameter 3 nt 3' from the end of the guide.", required=True)
-		# For CRISPResso
-		file_group.add_argument('-cf','--crispreeso_file', type=str, help='This parameter allows for the specification of the “Alleles_frequency_table.txt” from CRISPResso. When this parameter is used, “CRISPResso” should be entered as -m parameter.', default='./Alleles_frequency_table.txt', required=False)
-		# For CRISPResso2
-		file_group.add_argument('-ccf','--crispreeso2_file', type=str, help='This parameter allows for the specification of the “Alleles_frequency_table.zip” from CRISPResso2. When this parameter is used, “CRISPResso2” should be entered as -m parameter.', default='./Alleles_frequency_table.zip', required=False)
-		# Optional
-		parser.add_argument('-d','--donor_seq', type=str,  help='This parameter allows for the specification of the expected HDR amplicon used for the CRISPResso. The length of sequence should be >12bp in knock-out/knock-in analysis. In knock-out analysis, this parameter should not be entered, and then the value will be given fake parameter (“TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT”) and some internal settings is changed for knock-out analysis. However, fake parameter will be poly-C|G|A if amplicon sequence contains poly-T sequence.', default='', required=False)
-		parser.add_argument('-e','--expected_ki_amplicon_seq', type=str,  help='This parameter allows for the specification of the expected knock-in amplicon sequence which used for the CRISPResso after HDR. The length of sequence should be >12bp. In knock-out analysis, this parameter should not be entered, and then the value will be given fake parameter including fake donor sequence and some internal settings is changed for knock-out analysis.', default='', required=False)
-		parser.add_argument('-o','--output_folder', type=str,  help='This parameter allows for the specification of the output directory to use for the analysis (default: current directory)', default='./', required=False)
-		parser.add_argument('-lh','--length_left_homologyarm', type=int,  help='This parameter allows for the specification of the length of 5’ homology arm (default: 20). The length of sequence should be >17bp, and the flanking sequence with the homology arm needs length of >24bp in the expected amplicon sequence.', default='20', required=False)
-		parser.add_argument('-rh','--length_right_homologyarm', type=int,  help='This parameter allows for the specification of the length of 3’ homology arm (default: 20). The length of sequence should be >17bp, and the flanking sequence with the homology arm needs length of >24bp in the expected amplicon sequence.', default='20', required=False)
-		parser.add_argument('-cn','--location_comp_nick', type=int,  help='This parameter allows for the specification of the complementary strand nick location [3prime direction is +] (default: 90). This parameter is used in the prime editing and should be over the length of homology arm to which the nickase is adjacent', default='90', required=False)
-		parser.add_argument('-n','--name',  help='This parameter allows for the specification of the name which will be included output directory (default: “untitled-X”). If MaChIAto Analyzer and MaChIAto Reviewer will be used in the following analysis, the value should be “<target_name>-<sample label >” (e.g. DBF4B-C) and underbar "_" should not be used', default='untitled-X', required=False)
-		analysis_group.add_argument('--primeediting_analysis', help='Re-classify the data as prime editing analysis. This option forces the setting to change for knock-out analysis.', action='store_true', required=False)
-		analysis_group.add_argument('--force_knockout_analysis', help='Usually, MaChIAto re-classify the data as knock-in analysis. This option forces the setting to change for knock-out analysis. Under this mode, the length of indicator on knock-in donor is maximum value, and threshold value for alignment of knock-in sequence is 1.0. If this parameter is not entered, MaChIAto can automatically set up this mode by finding some characteristics of knock-out sample. For example, MaChIAto checks that there is no donor sequence or expected knock-in sequence as input, and there is less 3 kinds HDR variants among input data.', action='store_true', required=False)
-		optimization_group.add_argument('--skip_optimization', help='Usually, MaChIAto run Bayesian optimization for finding the optimized setting. This option allows MaChIAto to skip the process of optimization. The option is made for debugging. So, the option should not be used in usual analysis. However, if the optimization process disturbs an accurate analysis, this option might be useful.', action='store_true', required=False)
-		optimization_group.add_argument('--copy_optimization', help='Usually, MaChIAto run Bayesian optimization for finding the optimized setting. This option allows MaChIAto to use the provided optimization data instead of the optimization. If you analize NGS data with the setting of previous analized data, this option is useful. Espesially, in substitution editing, we can reccomend to apply the option to negative/positive control sample. However, you should understand that a classification error might frequently occurs.', action='store_true', required=False)
-		optimization_group.add_argument('--provided_optimization_file', help='This parameter allows for the specification of the “MaChIAto_optimized_param.csv” from the analized MaChIAto folder. When this parameter is used, --copy_optimization parameter is required.', default='./MaChIAto_optimized_param.csv', required=False)
+
 
 
 # MaChIAtoClassifier_Result
