@@ -1,4 +1,4 @@
-MaChIAto is a third party software of CRISPResso (https://github.com/pinellolab/CRISPResso2) to get stricter classification of the targeted amplicon sequencing (called also deep sequencing) and profile the relationship with genomic context (e.g. Thermodynamics and mutation pattarns) in the target site.
+MaChIAto is a third party software of CRISPResso (https://github.com/pinellolab/CRISPResso2) to get stricter classification of the targeted amplicon sequencing (also called deep sequencing) and profile the relationship with genomic context (e.g. Thermodynamics and mutation pattarns) in the target site.
 
 MaChIAto would be helpful for people who want to
 - get more accurate classification of knock-out, hmology-based knock-in, and Prime Editing. (Case I)
