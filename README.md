@@ -7,12 +7,12 @@ MaChIAto would be helpful for people who want to
 - analyze the microhmology involved with InDels and imprecise editing. (Case IV)
 - find the useful features for the efficiency prediction. (Case V)
 
-If you have the same purpose with the above cases, you can junp to [the section of Case Studies](#CaseStudies)!
+If you have the same purpose with the above cases, you can check to the section of Case Studies!
 
 # Quick Start
 
 We demonstrate the simple example.
-Before that, you have to build the environment according to [the section of Preparation](#Preparation)
+Before that, you have to build the environment according to the section of Preparation.
 
 #### 1. Download MaChIAto with example files
 
@@ -26,13 +26,13 @@ Or, enter the folowing command terminal.
 git clone https://github.com/KazukiNakamae/MaChIAto.git;
 ```
 
-#### 1. Open terminal and go the directory.
+#### 2. Open terminal and go the directory.
 
 ```bash
 cd <...>/MaChIAto
 ```
 
-#### 1. Re-classify the allele frequency table derived from CRISPResso2.
+#### 3. Re-classify the allele frequency table derived from CRISPResso2.
 
 ```bash
 source activate MaChIAto_env; # *You do not need enter it again once you did it.
@@ -65,19 +65,19 @@ python MaChIAto/MaChIAto.py -ccf <Alleles_frequency_table.zip of the CRISPResso2
 -g <protospaser sequence>;
 ```
 
-*The case of the knock-out and knock-in is shown in the section of [MaChIAto_(MaChIAto Classifier)](#MaChIAto_(MaChIAto Classifier)).
+*The case of the knock-out and knock-in is shown in the section of MaChIAto (MaChIAto Classifier).
 
-#### 1. Check the classification result.
+#### 4. Check the classification result.
 
 You can get the classification result of the editing. The result is visualized as the pie chart based on the ALL_dataframe,txt.
 
-We provide the detailed description how to read them in the section of [MaChIAtoClassifier result](#MaChIAtoClassifier_Result).
+We provide the detailed description how to read them in the section of MaChIAtoClassifier result.
 
 # Quick Start (Optional)
 
 MaChIAto can profile and visualize the MaChIAto result using MaChIAto Aligner, MaChIAto Analyzer, and MaChIAto Reviewer. 
 
-#### 1. Get local alignment and the mutation profiling using MaChIAto Aligner.
+#### 5. Get local alignment and the mutation profiling using MaChIAto Aligner.
 
 ```bash
 source activate MaChIAto_Aligner_env; # *You do not need enter it again once you did it.
@@ -95,15 +95,15 @@ conda deactivate;
 ```
 
 If your donor insert has the extra sequence in the outside of homology arm, you should enter it.
-Please refer to the section of [MaChIAtoAligner](#MaChIAtoAligner).
+Please refer to the section of MaChIAtoAligner.
 
-#### 1. Check the alignment result.
+#### 6. Check the alignment result.
 
 You can get the local alignment of the editing. The result is visualized as the map.
 
-We provide the detailed description how to read them in the section of [MaChIAtoAligner result](#MaChIAtoAligner_Result).
+We provide the detailed description how to read them in the section of MaChIAtoAligner result.
 
-#### 1. Aggregate the multiple data.
+#### 7. Aggregate the multiple data.
 
 If you have multiple data (n>3) to profile the characteristics, you should aggregate the data using the following command.
 
@@ -121,9 +121,9 @@ conda deactivate;
 ```
 
 It is used for the knock-out analysis. The calculation target for MaChIAto Analyzer/Reviewer is protpspacer.
-You can target the homology arm and RT template using another command. Please see the section of [MaChIAtoAnalyzer](#MaChIAtoAnalyzer).
+You can target the homology arm and RT template using another command. Please see the section of MaChIAtoAnalyzer.
 
-#### 1. Investivate the relationship with (epi-)genomic context
+#### 8. Investivate the relationship with (epi-)genomic context
 
 You can see the correlation with the >70 (epi-)genomic context using MaChIAto Analyzer.
 
@@ -138,15 +138,15 @@ conda deactivate;
 ```
 
 MaChIAtoAnalyzer basically use > 70 genomic context.
-If you want to use epigenomic context or other context, please see the section of [MaChIAtoAnalyzer](#MaChIAtoAnalyzer).
+If you want to use epigenomic context or other context, please see the section of MaChIAtoAnalyzer.
 
-#### 1. Check the correlation.
+#### 9. Check the correlation.
 
 You can get the correlation between the editing efficacy and the context. The result is visualized as the scatter plot.
 
-We provide the detailed description how to read them in the section of [MaChIAtoAnalyzer result](#MaChIAtoAnalyzer_Result).
+We provide the detailed description how to read them in the section of MaChIAtoAnalyzer result.
 
-#### 1. Profile the mutation tendency.
+#### 10. Profile the mutation tendency.
 
 
 ```bash
@@ -162,16 +162,16 @@ Rscript MaChIAto_Reviewer/MaChIAtoReviewer.R \
 conda deactivate;
 ```
 
-#### 1. Check the mutation profile.
+#### 11. Check the mutation profile.
 
 You can get the local alignment of the editing. The result is visualized as the bar plot and pie chart.
 
-We provide the detailed description how to read them in the section of [MaChIAtoReviewer result](#MaChIAtoReviewer_Result).
+We provide the detailed description how to read them in the section of MaChIAtoReviewer result.
 
 
 # Preparation
 
-Type the following commands.
+### Change default shell
 
 #### 1. Set bash as default shell
 ```bash
@@ -182,19 +182,19 @@ chsh -s /bin/tcsh;
 
 #### 1. install miniconda3 from Conda
 (https://docs.conda.io/en/latest/miniconda.html)
-#### 1. install R (>version R-4.0.1) from the CRAN
+#### 2. install R (>version R-4.0.1) from the CRAN
 (https://cran.ism.ac.jp)
-#### 1. install xcode from the App Store
+#### 3. install xcode from the App Store
 (https://apps.apple.com/jp/app/xcode/id497799835?mt=12)
 ```bash
 sudo xcodebuild -license;
 ```
-#### 1. install XQuartz from the XQuartz project
+#### 4. install XQuartz from the XQuartz project
 (xquartz.macosforge.org)
 
 ### Build the environment using conda
 
-#### Environment for MaChIAto_(MaChIAto Classifier)
+#### 1. Environment for MaChIAto_(MaChIAto Classifier)
 ```bash
 conda create --name MaChIAto_env;
 source activate MaChIAto_env;
@@ -204,7 +204,7 @@ pip install regex tqdm argparse biopython numpy matplotlib GPy gpyopt datetime p
 conda deactivate;
 ```
 
-#### Environment for MaChIAtoAligner
+#### 2. Environment for MaChIAtoAligner
 ```bash
 cd /Volumes/databank2;
 conda update -n base -c defaults conda;
@@ -214,7 +214,7 @@ conda install -c bioconda python=3.8 bwa=0.7.17 samtools=1.9;
 conda deactivate;
 ```
 
-#### Environment for MaChIAtoAnalyzer
+#### 3. Environment for MaChIAtoAnalyzer
 ```bash
 conda create --name MaChIAto_Analyzer_env;
 source activate MaChIAto_Analyzer_env;
@@ -225,7 +225,7 @@ pip install numpy regex tqdm pandas;
 conda deactivate;
 ```
 
-#### Environment for MaChIAtoReviewer
+#### 4. Environment for MaChIAtoReviewer
 ```bash
 conda create -n MaChIAto_Reviewer_env --clone MaChIAto_Aligner_env;
 source activate MaChIAto_Reviewer_env;
@@ -233,15 +233,24 @@ conda deactivate;
 ```
 
 ### Install OligoArrayAux
+
+#### 1. Change the current directory
 ```bash
 WORKING_DIRECTORY=$PWD;
 cd /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer;
+```
 
+#### 2. Download source files for MacOSX
+```bash
+source activate MaChIAto_Analyzer_env;
 # For Mac
 wget http://unafold.rna.albany.edu/cgi-bin/OligoArrayAux-download.cgi?oligoarrayaux-3.8.tar.gz;
 tar zxvf ./OligoArrayAux-download.cgi?oligoarrayaux-3.8.tar.gz;
 # Linux user can download the binary version intead: http://unafold.rna.albany.edu/?q=DINAMelt/OligoArrayAux
+```
 
+#### 3. Make the binary files of OligoArrayAux
+```bash
 cd oligoarrayaux-3.8;
 ./configure --prefix=/Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer;
 make;
@@ -356,7 +365,7 @@ python MaChIAto/MaChIAto.py \
 If you want to use the result of CRISPResso version1, the -ccf should be replased into -cf.
 Example for CRISPResso version1
 ```bash
-python MaChIAto/MaChIAto.py
+python MaChIAto/MaChIAto.py \
 -m CRISPResso \
 -cf <Alleles_frequency_table.txt of the CRISPResso output> \
 -o <output directory> \
@@ -367,10 +376,67 @@ python MaChIAto/MaChIAto.py
 
 *The **sample name** and **label name** can be **arbitrary**. If you analyze the multiple experiment (e.g. knock-out and knock-in), the name should be different from others.
 
+### The example of command
 
+##### Knock-out analysis
+```bash
+```
 
+##### Knock-in analysis
+```bash
+```
 
-# MaChIAtoClassifier_Result
+##### Prime Editing (Substitution editing)
+```bash
+python /Volumes/databank2/temp/MaChIAto/MaChIAto/MaChIAto.py \
+-m CRISPResso2 \
+-ccf /Volumes/databank2/PE/CRISPResso_on_SRR10287821/Alleles_frequency_table.zip \
+-o /Volumes/databank2/PE/MaChIAto_1.8_output \
+-a acttggtgccaaattcttctcccctgggaagcatccctggacacttcccaaaggaccccagtcactccagcctgttggctgccgctcactttgatgtctgcaggccagatgagggctccagatggcacattgtcagagggacacactgtggcccctgtgcccagccctgggctctctgtacatgaagcaactccagtcccaaatatgtagctgtttgggaggtcagaaatagggggtccaggagcaaactccccccaccccctttccaaagcccattccctctttag \
+-g gatgtctgcaggccagatga \
+-e acttggtgccaaattcttctcccctgggaagcatccctggacacttcccaaaggaccccagtcactccagcctgttggctgccgctcactttgatgtctgcaggccagaAgagggctccagatggcacattgtcagagggacacactgtggcccctgtgcccagccctgggctctctgtacatgaagcaactccagtcccaaatatgtagctgtttgggaggtcagaaatagggggtccaggagcaaactccccccaccccctttccaaagcccattccctctttag \
+-lh 13 \
+-rh 22 \
+-cn 57 \
+-n VEGFA_4e_1TtoA_rep1-C \
+--primeediting_analysis
+```
+
+##### Prime Editing (Deletion editing)
+```bash
+python /Volumes/databank2/temp/MaChIAto/MaChIAto/MaChIAto.py \
+-m CRISPResso2 -ccf /Volumes/databank2/PE/CRISPResso_on_SRR10287989/Alleles_frequency_table.zip \
+-o /Volumes/databank2/PE/MaChIAto_1.8_output \
+-a ACACTCTTTCCCTACACGACGCTCTTCCGATCtttacacgtctcatatgccccttggcagtcatcttagtcattacctgaggtgttcgttgtaactcatataaactgagttcccatgttttgcttaatggttgagttccgtttgtctgcacagcctgagacattgctggaaataaagaagagagaaaaacaattttagtatttggaagggaagtgctatggtctgaatgtatgtgtcccaccaaaattcctacgt \
+-g gtcatcttagtcattacctg \
+-e ACACTCTTTCCCTACACGACGCTCTTCCGATCtttacacgtctcatatgccccttggcagtcatcttagtcattacGagTtgttcgttgtaactcatataaactgagttcccatgttttgcttaatggttgagttccgtttgtctgcacagcctgagacattgctggaaataaagaagagagaaaaacaattttagtatttggaagggaagtgctatggtctgaatgtatgtgtcccaccaaaattcctacgt \
+-lh 15 \
+-rh 12 \
+-cn 41 \
+-n RNF2_4h_12CTdel_6GtoT-C \
+--primeediting_analysis;
+```
+
+##### Prime Editing (Insertion editing)
+```bash
+python /Volumes/databank2/temp/MaChIAto/MaChIAto/MaChIAto.py \
+-m CRISPResso2 \
+-ccf /Volumes/databank2/PE/CRISPResso_on_SRR10287978/Alleles_frequency_table.zip \
+-o /Volumes/databank2/PE/MaChIAto_1.8_output \
+-a ACACTCTTTCCCTACACGACGCTCTTCCGATCtttacacgtctcatatgccccttggcagtcatcttagtcattacctgaggtgttcgttgtaactcatataaactgagttcccatgttttgcttaatggttgagttccgtttgtctgcacagcctgagacattgctggaaataaagaagagagaaaaacaattttagtatttggaagggaagtgctatggtctgaatgtatgtgtcccaccaaaattcctacgt \
+-g gtcatcttagtcattacctg \
+-e ACACTCTTTCCCTACACGACGCTCTTCCGATCtttacacgtctcatatgccccttggcagtcatcttagtcattaccAAtggtgttcgttgtaactcatataaactgagttcccatgttttgcttaatggttgagttccgtttgtctgcacagcctgagacattgctggaaataaagaagagagaaaaacaattttagtatttggaagggaagtgctatggtctgaatgtatgtgtcccaccaaaattcctacgt \
+-d cAA \
+-lh 15 \
+-rh 14 \
+-cn 41 \
+-n RNF2_4h_2AAins_34GAdel-C \
+--primeediting_analysis;
+```
+
+# MaChIAtoClassifier result
+
+[Coming soon]
 
 # MaChIAto Aligner
 
@@ -388,7 +454,7 @@ The outside sequence flanking 5'-homology arm of donor.
 Right extra sequence (optional):
 The outside sequence flanking 3'-homology arm of donor. 
 
-### Template Command
+### Template command
 
 ```bash
 Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
@@ -400,7 +466,27 @@ Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
 
 *when you use external storage for save output, the process can be too slow. We recommend that you use the tool in the local storage.
 
-# MaChIAtoAligner_Result
+### Example of command
+
+##### Knock-out analysis / Prime Editing
+```bash
+Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
+MaChIAto_from_CRISPResso2_at_20200311211350_on_DBF4B-B \
+./;
+```
+
+##### Knock-in analysis
+```bash
+Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
+MaChIAto_from_CRISPResso2_at_20200311211350_on_DBF4B-C \
+./ \
+GTTTGG  \
+CCAAAC;
+```
+
+# MaChIAtoAligner result
+
+[Coming soon]
 
 # MaChIAto Analyzer
 
@@ -484,76 +570,49 @@ python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 
 ### Example of command
 
+##### Double knock-in analysis: PITCh and LoAD knock-in using MS2-tagged sgRNA / calculation target : both homology arm
+```
+python /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i ./MaChIAto2_v1.7.0_output_200311 \
+-o ./20200311_MaChIAto2_data_analysis_mode1 \
+-sc gttttagagctaggccaacatgaggatcacccatgtctgcagggcctagcaagttaaaataaggctagtccgttatcaacttggccaacatgaggatcacccatgtctgcagggccaagtggcaccgagtcggtgc \
+-ul A \
+-ol B \
+-il C D \
+-t bmh \
+--ignore_list ./20190916_MaChIAto2_data_analysis/ignore_list.csv;
+```
+
+##### Single knock-out analysis: knock-out using MS2-tagged sgRNA / calculation target : protospacer
+```
+python /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i ./MaChIAto2_v1.7.0_output_200311 \
+-o ./20200311_MaChIAto2_data_analysis_mode1 \
+-sc gttttagagctaggccaacatgaggatcacccatgtctgcagggcctagcaagttaaaataaggctagtccgttatcaacttggccaacatgaggatcacccatgtctgcagggccaagtggcaccgagtcggtgc \
+-ul A \
+-ol B \
+-t protospacer \
+--ignore_list ./20190916_MaChIAto2_data_analysis/ignore_list.csv;
+```
+
+##### Simple knock-in analysis: Prime Editing / calculation target : RT template (= edited right homology arm)
 ```bash
-source activate MaChIAto_Analyzer_env; # *You do not need enter it again once you did it.
-python MaChIAto_Analyzer/collect_MaChIAto_data.py \
--i <the prefix of MaChIAto Classifier result> \
--o <output directory> \
--sc gttttagagctaggccaacatgaggatcacccatgtctgcagggcctagcaagttaaaataaggctagtccgttatcaacttggccaacatgaggatcacccatgtctgcagggccaagtggcaccgagtcggtgc \ #note
--ul A \
--ol B \
--il C D \
--t bmh \
---ignore_list ./20190916_MaChIAto2_data_analysis/ignore_list.csv;
-
-```
-
-```
-python /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.py \
--i ./MaChIAto2_v1.7.0_output_200311 \
--o ./20200311_MaChIAto2_data_analysis_mode1 \
--sc gttttagagctaggccaacatgaggatcacccatgtctgcagggcctagcaagttaaaataaggctagtccgttatcaacttggccaacatgaggatcacccatgtctgcagggccaagtggcaccgagtcggtgc \
--ul A \
--ol B \
--il C D \
--t bmh \
---ignore_list ./20190916_MaChIAto2_data_analysis/ignore_list.csv;
-```
-
-# 3) Simple knock-in analysis : -il PE -t ebmh
-```
-mkdir ./PE/20200508_MaChIAto2_data_analysis
-
-python3 /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.py \
--i ./PE/for_analyzer \
--o ./PE/20200508_MaChIAto2_data_analysis \
--il PE \
--t ebmh;
-```
-
-# 3) Simple knock-in analysis : -il PE -t protospacer
-```
-mkdir ./PE/20200510_MaChIAto2_data_analysis
-
-python3 /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.py \
--i ./PE/for_analyzer \
--o ./PE/20200510_MaChIAto2_data_analysis \
--il PE \
--t protospacer;
-```
-
-50 knock-in | both homology arm
-```
-python /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.py \
--i ./MaChIAto2_v1.7.0_output_200311 \
--o ./20200311_MaChIAto2_data_analysis_mode1 \
--sc gttttagagctaggccaacatgaggatcacccatgtctgcagggcctagcaagttaaaataaggctagtccgttatcaacttggccaacatgaggatcacccatgtctgcagggccaagtggcaccgagtcggtgc \
--ul A \
--ol B \
--il C D \
--t bmh \
---ignore_list ./20190916_MaChIAto2_data_analysis/ignore_list.csv;
-```
-
-prime Editing | RT template
-
-```
 python3 /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.py \
 -i ./PE/MaChIAto_1.8_output \
 -o ./PE/20200629_MaChIAto2_data_analysis \
 -il C \
 -t ermh \
 --ignore_list ./PE/20200629_MaChIAto2_data_analysis/ignore_list.csv;
+```
+
+# 3) Simple knock-in analysis: Prime Editing / calculation target : protospacer
+```bash
+python3 /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i ./PE/MaChIAto_1.8_output \
+-o ./PE/20200629_MaChIAto2_data_analysis \
+-il C \
+-t ermh \
+-t protospacer;
 ```
 
 
@@ -585,6 +644,8 @@ Rscript MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
 
 ### Example of command
 
+##### Double knock-in analysis: PITCh and LoAD knock-in
+```bash
 Rscript MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
 ./20200311_MaChIAto2_data_analysis_mode1 \
 ./MaChIAtoAnalyzer_beta1.6_output \
@@ -594,6 +655,18 @@ Accessibility \
 ./extra_table/bmh_extra_data_accessibility.csv \
 Genome_Property \
 ./extra_table/bmh_extra_data_genomeprop.csv;
+```
+
+##### Prime Editing
+```bash
+Rscript /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
+./PE/20200629_MaChIAto2_data_analysis \
+./PE/MaChIAtoAnalyzer_beta1.6_1.8_output;
+```
+
+# MaChIAtoAnalyzer result
+
+[Coming soon]
 
 # MaChIAto Reviewer
 
@@ -613,10 +686,23 @@ Rscript MaChIAto_Reviewer/MaChIAtoReviewer.R \
 
 ### Example of command
 
+##### Double knock-in analysis: PITCh and LoAD knock-in
+```bash
 Rscript /Volumes/databank2/temp/MaChIAto/MaChIAto_Reviewer/MaChIAtoReviewer.R \
 ./MaChIAto2_v1.7.0_output_200311 \
 ./MaChIAtoAlignerv14_output_200501_from_MaChIAto2_v1.7.0_output_200311 \
 ./20200311_MaChIAto2_data_analysis_mode1 \
 ./MaChIAtoReviewer_beta2.4_output_200610_from_MaChIAto2_v1.7.0_output_200311;
+```
+
+##### Prime Editing
+```bash
+```
+
+# MaChIAtoReviewer result
+
+[Coming soon]
 
 # CaseStudies
+
+[Coming soon]
