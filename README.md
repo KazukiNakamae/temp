@@ -511,12 +511,19 @@ CCAAAC;
 ### Parameter list
 
 **-i** or **--indir** {str}: input directory which includes the results of MaChIAto Classifier
+
 **-o** or **--outdir** {str}: output directory
+
 **-ul** or **--untreated_label** {str}: untreated label (This must be one.)' (default: "machiato_dummy_sample") (optional)
+
 **-ol** or **--knock_out_label** {str}: negative control label' (default: []) (optional)
+
 **-il** or **--knock_in_label** {str}: knock-in_label' (default: []) (optional)
+
 **-sc** or **--scaffold_seq** {str}: scaffold sequence of sgRNA (default: "gttttagagctagaaatagcaagttaaaataaggctagtccgttatcaacttgaaaaagtggcaccgagtcggtgc") (optional)
+
 **-t** or **--target_type** {str}: target sequence type {"lmh" | "rmh" | "bmh" | "elmh" | "ermh" | "ebmh" | "protospacer"} (default: "bmh") (optional)
+
 **--ignore_list** {str}: The list of ignore target set contains target names which are not desired to analyze for some reasons. The data (e.g. DBF4B-A, DBF4B-B, DBF4B-C, DBF4B-D) including target name (e.g. DBF4B) shown in the list is skipped through the process of MaChIAto Analyzer. The format should be comma-separated like “TargetA, TargetB, …” “example_data” directory has “ignore_list.csv” as example. (default: "") (optional)
 
 ### Template command
