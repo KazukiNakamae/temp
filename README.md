@@ -254,31 +254,35 @@ conda deactivate;
 
 ## Usage of MaChIAto Classifier
 
-**-m**, **--mode** <str>: This parameter allows for the specification of type of analysis: “CRISPResso” and “CRISPResso2” is allowed in the latest version
+### Parameter list
 
-**-a**, **--amplicon_seq** <str>: This parameter allows the user to enter the amplicon sequence used for the CRISPResso. The length should be >105bp due to setting for the other parameter.
+**-m** or **--mode** <str>: This parameter allows for the specification of type of analysis: “CRISPResso” and “CRISPResso2” is allowed in the latest version
 
-**-g**, **--guide_seq** <str>help="This parameter allows for the specification of the sgRNA sequence used for the CRISPResso. The length of sequence should be 20nt without PAM. The MaChIAto convention is to depict the expected cleavage position using the value of the parameter 3 nt 3' from the end of the guide.", required=True)
+**-a** or **--amplicon_seq** <str>: This parameter allows the user to enter the amplicon sequence used for the CRISPResso. The length should be >105bp due to setting for the other parameter.
 
-**-cf**, **--crispreeso_file**, type=str : This parameter allows for the specification of the “Alleles_frequency_table.txt” from CRISPResso. When this parameter is used, “CRISPResso” should be entered as -m parameter.', (default: "./Alleles_frequency_table.txt") (optional)
+**-g** or **--guide_seq** <str>: This parameter allows for the specification of the sgRNA sequence used for the CRISPResso. The length of sequence should be 20nt without PAM. The MaChIAto convention is to depict the expected cleavage position using the value of the parameter 3 nt 3' from the end of the guide.", required=True)
 
-**-ccf**, **--crispreeso2_file**, type=str : This parameter allows for the specification of the “Alleles_frequency_table.zip” from CRISPResso2. When this parameter is used, “CRISPResso2” should be entered as -m parameter.', (default: "./Alleles_frequency_table.zip") (optional)
+**-cf** or **--crispreeso_file** <str> : This parameter allows for the specification of the “Alleles_frequency_table.txt” from CRISPResso. When this parameter is used, “CRISPResso” should be entered as -m parameter.', (default: "./Alleles_frequency_table.txt") (optional)
 
-**-d**, **--donor_seq** <str>: This parameter allows for the specification of the expected HDR amplicon used for the CRISPResso. The length of sequence should be >12bp in knock-out/knock-in analysis. In knock-out analysis, this parameter should not be entered, and then the value will be given fake parameter (“TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT”) and some internal settings is changed for knock-out analysis. However, fake parameter will be poly-C|G|A if amplicon sequence contains poly-T sequence.', (default: "") (optional)
+**-ccf** or **--crispreeso2_file** <str> : This parameter allows for the specification of the “Alleles_frequency_table.zip” from CRISPResso2. When this parameter is used, “CRISPResso2” should be entered as -m parameter.', (default: "./Alleles_frequency_table.zip") (optional)
 
-**-e**, **--expected_ki_amplicon_seq** <str>: This parameter allows for the specification of the expected knock-in amplicon sequence which used for the CRISPResso after HDR. The length of sequence should be >12bp. In knock-out analysis, this parameter should not be entered, and then the value will be given fake parameter including fake donor sequence and some internal settings is changed for knock-out analysis.', (default: "") (optional)
+**-d** or **--donor_seq** <str>: This parameter allows for the specification of the expected HDR amplicon used for the CRISPResso. The length of sequence should be >12bp in knock-out/knock-in analysis. In knock-out analysis, this parameter should not be entered, and then the value will be given fake parameter (“TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT”) and some internal settings is changed for knock-out analysis. However, fake parameter will be poly-C|G|A if amplicon sequence contains poly-T sequence.', (default: "") (optional)
 
-**-o**, **--output_folder** <str>: This parameter allows for the specification of the output directory to use for the analysis (default: current directory)', (default: "./") (optional)
+**-e** or **--expected_ki_amplicon_seq** <str>: This parameter allows for the specification of the expected knock-in amplicon sequence which used for the CRISPResso after HDR. The length of sequence should be >12bp. In knock-out analysis, this parameter should not be entered, and then the value will be given fake parameter including fake donor sequence and some internal settings is changed for knock-out analysis.', (default: "") (optional)
 
-**-lh**, **--length_left_homologyarm** <int>: This parameter allows for the specification of the length of 5’ homology arm (default: 20). The length of sequence should be >17bp, and the flanking sequence with the homology arm needs length of >24bp in the expected amplicon sequence.', (default: 20) (optional)
+**-o** or **--output_folder** <str>: This parameter allows for the specification of the output directory to use for the analysis (default: current directory)', (default: "./") (optional)
 
-**-rh**, **--length_right_homologyarm** <int>: This parameter allows for the specification of the length of 3’ homology arm (default: 20). The length of sequence should be >17bp, and the flanking sequence with the homology arm needs length of >24bp in the expected amplicon sequence.', (default: 20) (optional)
+**-lh** or **--length_left_homologyarm** <int>: This parameter allows for the specification of the length of 5’ homology arm (default: 20). The length of sequence should be >17bp, and the flanking sequence with the homology arm needs length of >24bp in the expected amplicon sequence.', (default: 20) (optional)
 
-**-cn**, **--location_comp_nick** <int>: This parameter allows for the specification of the complementary strand nick location [3prime direction is +] (default: 90). This parameter is used in the prime editing and should be over the length of homology arm to which the nickase is adjacent', (default: 90) (optional)
+**-rh** or **--length_right_homologyarm** <int>: This parameter allows for the specification of the length of 3’ homology arm (default: 20). The length of sequence should be >17bp, and the flanking sequence with the homology arm needs length of >24bp in the expected amplicon sequence.', (default: 20) (optional)
 
-**-n**, **--name**  : This parameter allows for the specification of the name which will be included output directory (default: “untitled-X”). If MaChIAto Analyzer and MaChIAto Reviewer will be used in the following analysis, the value should be “<target_name>-<sample label >” (e.g. DBF4B-C) and underbar "_" should not be used', (default: "untitled-X") (optional)
+**-cn** or **--location_comp_nick** <int>: This parameter allows for the specification of the complementary strand nick location [3prime direction is +] (default: 90). This parameter is used in the prime editing and should be over the length of homology arm to which the nickase is adjacent', (default: 90) (optional)
+
+**-n** or **--name**  : This parameter allows for the specification of the name which will be included output directory (default: “untitled-X”). If MaChIAto Analyzer and MaChIAto Reviewer will be used in the following analysis, the value should be “<target_name>-<sample label >” (e.g. DBF4B-C) and underbar "_" should not be used', (default: "untitled-X") (optional)
 
 **--primeediting_analysis** : Re-classify the data as prime editing analysis. This option forces the setting to change for knock-out analysis.', action='store_true (optional)
+
+#### Adcanced parameter (for developers)
 
 **--force_knockout_analysis** : Usually, MaChIAto re-classify the data as knock-in analysis. This option forces the setting to change for knock-out analysis. Under this mode, the length of indicator on knock-in donor is maximum value, and threshold value for alignment of knock-in sequence is 1.0. If this parameter is not entered, MaChIAto can automatically set up this mode by finding some characteristics of knock-out sample. For example, MaChIAto checks that there is no donor sequence or expected knock-in sequence as input, and there is less 3 kinds HDR variants among input data.', action='store_true (optional)
 
@@ -288,14 +292,17 @@ conda deactivate;
 
 **--provided_optimization_file** : This parameter allows for the specification of the “MaChIAto_optimized_param.csv” from the analized MaChIAto folder. When this parameter is used, --copy_optimization parameter is required.', (default: "./MaChIAto_optimized_param.csv") (optional)
 
+### Template Command
+
 ##### The case of knock-out
 ```bash
 python MaChIAto/MaChIAto.py \
 -m CRISPResso2 \
 -ccf <Alleles_frequency_table.zip of the CRISPResso2 output> \
 -o <output directory> \
--a <wt amplicon sequence>\
--g <protospaser sequence>;
+-a <wt amplicon sequence> \
+-g <protospaser sequence> \
+-n <sample name>-<label name>;
 ```
 
 ##### The case of homology-based knock-in
@@ -309,7 +316,8 @@ python MaChIAto/MaChIAto.py \
 -e <expected editing amplicon seqeunce> \
 -d <donor insert sequence> \
 -lh <length of 5\' homology arm> \
--rh <length of 3\' homology arm>;
+-rh <length of 3\' homology arm> \
+-n <sample name>-<label name>;
 ```
 
 ##### The case of Prime Editing (Substitution/Deletion editing)
@@ -324,7 +332,8 @@ python MaChIAto/MaChIAto.py \
 -lh <length of prime binding site> \
 -rh <length of RT template> \
 -cn <distance between two nick sites> \
---primeediting_analysis;
+--primeediting_analysis \
+-n <sample name>-<label name>;
 ```
 
 ##### The case of Prime Editing (Insertion editing)
@@ -340,7 +349,8 @@ python MaChIAto/MaChIAto.py \
 -lh <length of prime binding site> \
 -rh <length of RT template> \
 -cn <distance between two nick sites> \
---primeediting_analysis;
+--primeediting_analysis \
+-n <sample name>-<label name>;
 ```
 
 If you want to use the result of CRISPResso version1, the -ccf should be replased into -cf.
@@ -351,8 +361,11 @@ python MaChIAto/MaChIAto.py
 -cf <Alleles_frequency_table.txt of the CRISPResso output> \
 -o <output directory> \
 -a <wt amplicon sequence>\
--g <protospaser sequence>;
+-g <protospaser sequence> \
+-n <sample name>-<label name>;
 ```
+
+*The **sample name** and **label name** can be **arbitrary**. If you analyze the multiple experiment (e.g. knock-out and knock-in), the name should be different from others.
 
 
 
@@ -361,26 +374,7 @@ python MaChIAto/MaChIAto.py
 
 # MaChIAto Aligner
 
-```bash
-source activate MaChIAto_Aligner_env; # *You do not need enter it again once you did it.
-# ↓The alignment command of MaChIAto Aligner
-Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
-<directory of MaChIAto Classifier> \
-<output directory> \
-<extra sequence at the 5\' side of donor insert> \
-<extra sequence at the 3\' side of donor insert>;
-
-conda deactivate;
-```
-
--------------------------------------------------------------------------------
-EXAMPLE INPUT
--------------------------------------------------------------------------------
-Rscript ./MAChIAto/MaChIAto_Aligner/MaChIAtoAligner.R <input directory> <output prefix> <left extra sequence> <right extra sequence>
-
--------------------------------------------------------------------------------
-DESPRIPTION
--------------------------------------------------------------------------------
+### Parameter list
 
 Input directory:
 The directory that MaChIAto Classifier generated.
@@ -389,21 +383,106 @@ Output prefix:
 The directory into which the output directory is saved.
 
 Left extra sequence (optional):
-The outside sequence joining 5'-homology arm of donor. 
+The outside sequence flanking 5'-homology arm of donor. 
 
 Right extra sequence (optional):
-The outside sequence joining 3'-homology arm of donor. 
+The outside sequence flanking 3'-homology arm of donor. 
 
--------------------------------------------------------------------------------
+### Template Command
 
+```bash
+Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
+<Input directory> \
+<Output prefix> \
+<Left extra sequence> \
+<Right extra sequence>;
+```
 
-# when you use external storage for save output, the process can be too slow.
+*when you use external storage for save output, the process can be too slow. We recommend that you use the tool in the local storage.
 
 # MaChIAtoAligner_Result
 
 # MaChIAto Analyzer
 
+## collect_MaChIAto_data.py
 
+### Parameter list
+
+**-i** or **--indir** <str>: input directory which includes the results of MaChIAto Classifier
+**-o** or **--outdir** <str>: output directory
+**-ul** or **--untreated_label** <str>: untreated label (This must be one.)' (default: "machiato_dummy_sample") (optional)
+**-ol** or **--knock_out_label** <str>: negative control label' (default: []) (optional)
+**-il** or **--knock_in_label** <str>: knock-in_label' (default: []) (optional)
+**-sc** or **--scaffold_seq** <str>: scaffold sequence of sgRNA (default: "gttttagagctagaaatagcaagttaaaataaggctagtccgttatcaacttgaaaaagtggcaccgagtcggtgc") (optional)
+**-t** or **--target_type** <str>: target sequence type {"lmh" | "rmh" | "bmh" | "elmh" | "ermh" | "ebmh" | "protospacer"} (default: "bmh") (optional)
+**--ignore_list** <str>: The list of ignore target set contains target names which are not desired to analyze for some reasons. The data (e.g. DBF4B-A, DBF4B-B, DBF4B-C, DBF4B-D) including target name (e.g. DBF4B) shown in the list is skipped through the process of MaChIAto Analyzer. The format should be comma-separated like “TargetA, TargetB, …” “example_data” directory has “ignore_list.csv” as example. (default: "") (optional)
+
+### Template command
+
+##### The case of Double knock-in analysis (*ADVANCE: The analysis includes the comparison between two knock-in methods.)
+```bash
+python MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i <the prefix of MaChIAto Classifier result> \
+-o <output directory> \
+-sc <scaffold sequence of sgRNA> \
+-ul <unmodified label> \
+-ol <knock-out label> \
+-il <knock-out label 1> <knock-out label 2> \
+-t <calculation target> \
+--ignore_list <list of samples ignored>;
+```
+
+##### The case of Single knock-in analysis (*STANDARD)
+```bash
+python MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i <the prefix of MaChIAto Classifier result> \
+-o <output directory> \
+-sc <scaffold sequence of sgRNA> \
+-ul <unmodified label> \
+-ol <knock-out label> \
+-il <knock-out label> \
+-t <calculation target> \
+--ignore_list <list of samples ignored>;
+```
+
+##### The case of Simple knock-in analysis (*SIMPLE: The analysis can be applied when there is no knock-out sample used as control.)
+```bash
+python MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i <the prefix of MaChIAto Classifier result> \
+-o <output directory> \
+-sc <scaffold sequence of sgRNA> \
+-il <knock-out label> \
+-t <calculation target> \
+--ignore_list <list of samples ignored>;
+```
+
+##### The case of Double knock-out analysis (*ADVANCE: The analysis includes the comparison between two knock-out methods.)
+```bash
+python MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i <the prefix of MaChIAto Classifier result> \
+-o <output directory> \
+-sc <scaffold sequence of sgRNA> \
+-ul <unmodified label> \
+-ol <knock-out label 1> <knock-out label 2> \
+-t <calculation target> \
+--ignore_list <list of samples ignored>;
+```
+
+##### The case of Single knock-out analysis (*STANDARD)
+```bash
+python MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i <the prefix of MaChIAto Classifier result> \
+-o <output directory> \
+-sc <scaffold sequence of sgRNA> \
+-ul <unmodified label> \
+-ol <knock-out label> \
+-t <calculation target> \
+--ignore_list <list of samples ignored>;
+```
+
+*If you do not enter "-ul <unmodified label>", the process can work. However, some filtering process will be skipped.
+
+### Example of command
 
 ```bash
 source activate MaChIAto_Analyzer_env; # *You do not need enter it again once you did it.
@@ -419,7 +498,7 @@ python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 
 ```
 
-
+```
 python /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.py \
 -i ./MaChIAto2_v1.7.0_output_200311 \
 -o ./20200311_MaChIAto2_data_analysis_mode1 \
@@ -429,8 +508,84 @@ python /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.
 -il C D \
 -t bmh \
 --ignore_list ./20190916_MaChIAto2_data_analysis/ignore_list.csv;
+```
 
-Rscript /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
+# 3) Simple knock-in analysis : -il PE -t ebmh
+```
+mkdir ./PE/20200508_MaChIAto2_data_analysis
+
+python3 /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i ./PE/for_analyzer \
+-o ./PE/20200508_MaChIAto2_data_analysis \
+-il PE \
+-t ebmh;
+```
+
+# 3) Simple knock-in analysis : -il PE -t protospacer
+```
+mkdir ./PE/20200510_MaChIAto2_data_analysis
+
+python3 /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i ./PE/for_analyzer \
+-o ./PE/20200510_MaChIAto2_data_analysis \
+-il PE \
+-t protospacer;
+```
+
+50 knock-in | both homology arm
+```
+python /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i ./MaChIAto2_v1.7.0_output_200311 \
+-o ./20200311_MaChIAto2_data_analysis_mode1 \
+-sc gttttagagctaggccaacatgaggatcacccatgtctgcagggcctagcaagttaaaataaggctagtccgttatcaacttggccaacatgaggatcacccatgtctgcagggccaagtggcaccgagtcggtgc \
+-ul A \
+-ol B \
+-il C D \
+-t bmh \
+--ignore_list ./20190916_MaChIAto2_data_analysis/ignore_list.csv;
+```
+
+prime Editing | RT template
+
+```
+python3 /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i ./PE/MaChIAto_1.8_output \
+-o ./PE/20200629_MaChIAto2_data_analysis \
+-il C \
+-t ermh \
+--ignore_list ./PE/20200629_MaChIAto2_data_analysis/ignore_list.csv;
+```
+
+
+## MaChIAto Analyzer
+
+### Parameter list
+
+Summary directory:
+The summary directory generated with “collect_MaChIAto_data.py”.
+
+Output prefix:
+The directory into which the output directory is saved.
+
+Name of extra data (optional):
+The name of feature group that the next argument includes.
+
+Table of extra data (optional):
+The pathname of extra data added by the user. The data should be a .csv file.
+
+### Template command
+
+```bash
+Rscript MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
+<Summary directory> \
+<Output prefix> \
+<Name of extra data> \
+<Table of extra data>;
+```
+
+### Example of command
+
+Rscript MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
 ./20200311_MaChIAto2_data_analysis_mode1 \
 ./MaChIAtoAnalyzer_beta1.6_output \
 InDelphi \
@@ -442,11 +597,26 @@ Genome_Property \
 
 # MaChIAto Reviewer
 
+### Parameter list
+
+Summary directory:
+The summary directory generated with “collect_MaChIAto_data.py”.
+
+Output prefix:
+The directory into which the output directory is saved.
+
+### Template command
+
+Rscript MaChIAto_Reviewer/MaChIAtoReviewer.R \
+<Summary directory> \
+<Output prefix>;
+
+### Example of command
+
 Rscript /Volumes/databank2/temp/MaChIAto/MaChIAto_Reviewer/MaChIAtoReviewer.R \
 ./MaChIAto2_v1.7.0_output_200311 \
 ./MaChIAtoAlignerv14_output_200501_from_MaChIAto2_v1.7.0_output_200311 \
 ./20200311_MaChIAto2_data_analysis_mode1 \
 ./MaChIAtoReviewer_beta2.4_output_200610_from_MaChIAto2_v1.7.0_output_200311;
-
 
 # CaseStudies
