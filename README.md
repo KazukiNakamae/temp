@@ -59,9 +59,10 @@ The other parameters varies per experiment type {knock-out, homology-based knokc
 
 The example is for the knock-out analysis.
 
-##### The case of knock-out
+##### Case of knock-out
 ```bash
-python MaChIAto/MaChIAto.py -ccf (Alleles_frequency_table.zip of the CRISPResso2 output) \
+python MaChIAto/MaChIAto.py \
+-ccf (Alleles_frequency_table.zip of the CRISPResso2 output) \
 -o (output directory) \
 -a (wt amplicon sequence)\
 -g (protospaser sequence);
@@ -303,9 +304,9 @@ conda deactivate;
 
 **--provided_optimization_file** : This parameter allows for the specification of the “MaChIAto_optimized_param.csv” from the analyzed MaChIAto folder. When this parameter is used, --copy_optimization parameter is required.', (default: "./MaChIAto_optimized_param.csv") (optional)
 
-### Template Command
+### Template command
 
-##### The case of knock-out
+##### Case of knock-out
 ```bash
 python MaChIAto/MaChIAto.py \
 -m CRISPResso2 \
@@ -316,7 +317,7 @@ python MaChIAto/MaChIAto.py \
 -n (sample name)-(label name);
 ```
 
-##### The case of homology-based knock-in
+##### Case of homology-based knock-in
 ```bash
 python MaChIAto/MaChIAto.py \
 -m CRISPResso2 \
@@ -331,7 +332,7 @@ python MaChIAto/MaChIAto.py \
 -n (sample name)-(label name);
 ```
 
-##### The case of Prime Editing (Substitution/Deletion editing)
+##### Case of Prime Editing (Substitution/Deletion editing)
 ```bash
 python MaChIAto/MaChIAto.py \
 -m CRISPResso2 \
@@ -347,7 +348,7 @@ python MaChIAto/MaChIAto.py \
 -n (sample name)-(label name);
 ```
 
-##### The case of Prime Editing (Insertion editing)
+##### Case of Prime Editing (Insertion editing)
 ```bash
 python MaChIAto/MaChIAto.py \
 -m CRISPResso2 \
@@ -482,7 +483,7 @@ Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
 
 *when you use external storage for save output, the process can be too slow. We recommend that you use the tool in the local storage.
 
-### Example of command
+### Example of the command
 
 ##### Knock-out analysis / Prime Editing
 ```bash
@@ -528,7 +529,7 @@ CCAAAC;
 
 ### Template command
 
-##### The case of Double knock-in analysis (*ADVANCE: The analysis includes the comparison between two knock-in methods.)
+##### Case of Double knock-in analysis (*ADVANCE: The analysis includes the comparison between two knock-in methods.)
 ```bash
 python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 -i (the prefix of MaChIAto Classifier result) \
@@ -541,7 +542,7 @@ python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 --ignore_list (list of samples ignored);
 ```
 
-##### The case of Single knock-in analysis (*STANDARD)
+##### Case of Single knock-in analysis (*STANDARD)
 ```bash
 python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 -i (the prefix of MaChIAto Classifier result) \
@@ -554,7 +555,7 @@ python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 --ignore_list (list of samples ignored);
 ```
 
-##### The case of Simple knock-in analysis (*SIMPLE: The analysis can be applied when there is no knock-out sample used as control.)
+##### Case of Simple knock-in analysis (*SIMPLE: The analysis can be applied when there is no knock-out sample used as control.)
 ```bash
 python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 -i (the prefix of MaChIAto Classifier result) \
@@ -565,7 +566,7 @@ python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 --ignore_list (list of samples ignored);
 ```
 
-##### The case of Double knock-out analysis (*ADVANCE: The analysis includes the comparison between two knock-out methods.)
+##### Case of Double knock-out analysis (*ADVANCE: The analysis includes the comparison between two knock-out methods.)
 ```bash
 python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 -i (the prefix of MaChIAto Classifier result) \
@@ -577,7 +578,7 @@ python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 --ignore_list (list of samples ignored);
 ```
 
-##### The case of Single knock-out analysis (*STANDARD)
+##### Case of Single knock-out analysis (*STANDARD)
 ```bash
 python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 -i (the prefix of MaChIAto Classifier result) \
@@ -591,7 +592,7 @@ python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 
 *If you do not enter "-ul (unmodified label)", the process can work. However, some filtering process will be skipped.
 
-### Example of command
+### Example of the command
 
 ##### Double knock-in analysis: PITCh and LoAD knock-in using MS2-tagged sgRNA/calculation target: both homology arm
 ```
@@ -665,7 +666,7 @@ Rscript MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
 (Table of extra data);
 ```
 
-### Example of command
+### Example of the command
 
 ##### Double knock-in analysis: PITCh and LoAD knock-in
 ```bash
@@ -707,7 +708,7 @@ Rscript MaChIAto_Reviewer/MaChIAtoReviewer.R \
 (Summary directory) \
 (Output prefix);
 
-### Example of command
+### Example of the command
 
 ##### Double knock-in analysis: PITCh and LoAD knock-in
 ```bash
