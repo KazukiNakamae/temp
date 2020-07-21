@@ -1,4 +1,6 @@
-MaChIAto is a third party software of CRISPResso (https://github.com/pinellolab/CRISPResso2) to get stricter classification of the targeted amplicon sequencing (also called deep sequencing) and profile the relationship with genomic context (e.g. Thermodynamics and mutation pattarns) in the target site.
+<img src="https://github.com/KazukiNakamae/temp/blob/temp-images/logo.png" alt="MaChIAto_logo" title="MaChIAto_logo" width="200" height="200">
+
+MaChIAto is a third party software of CRISPResso (https://github.com/pinellolab/CRISPResso2) to get stricter classification of the targeted amplicon sequencing (also called deep sequencing) and profile the relationship with genomic context (e.g. Thermodynamics and mutation pattarns) in the CRISPR-Cas9/Prime Editor targeting site.
 
 MaChIAto would be helpful for people who want to
 - get more accurate classification of knock-out, hmology-based knock-in, and Prime Editing. (Case I)
@@ -380,10 +382,24 @@ python MaChIAto/MaChIAto.py \
 
 ##### Knock-out analysis
 ```bash
+python /Volumes/databank2/temp/MaChIAto/MaChIAto/MaChIAto.py \
+-m CRISPResso2 -ccf /Volumes/databank2/move_from_smgPC_1/CRISPResso2_output/CRISPResso_on_20190702171907_AAVS1-B/Alleles_frequency_table.zip \
+-o /Volumes/databank2/200721_CRISPResso2_output_1.8.1 \
+-a CAGGGGTCCGAGAGCTCAGCTAGTCTTCTTCCTCCAACCCGGGCCCCTATGTCCACTTCAGGACAGCATGTTTGCTGCCTCCAGGGATCCTGTGTCCCCGAGCTGGGACCACCTTATATTCCCAGGGCCGGTTAATGTGGCTCTGGTTCTGGGTACTTTTATCTGTCCCCTCCACCCCACAGTGGGGCCACTAGGGACAGGATTGGTGACAGAAAAGCCCCATCCTTAGGCCTCCTCCTTCCTAGTCTCCTGATATTGGGTCTAACCCCCACCTCCTGTTAGGCAGATTCCTTATCTGGTGACACACCCCCATTTCCTGGAGCCATCTCTCT \
+-g ACCCCACAGTGGGGCCACTA \
+-n AAVS1-B;
 ```
 
 ##### Knock-in analysis
 ```bash
+python /Volumes/databank2/temp/MaChIAto/MaChIAto/MaChIAto.py \
+-m CRISPResso2 -ccf /Volumes/databank2/move_from_smgPC_1/CRISPResso2_output/CRISPResso_on_20190702174343_DBF4B-C/Alleles_frequency_table.zip \
+-o /Volumes/databank2/200721_CRISPResso2_output_1.8.1 \
+-a TTTCTGAGCAAAGAAGTAAGTTACATCGTGTCCAGCCGCAGAGAAGTAAAGGCAGAGAGCAGTGGGAAAAGCCATAGAGGCTGCCCTAGCCCTAGCCCCAGTGAGGTCAGAGTGGAAACATCGGCCATGGTTGATCCAAAAGGCAGCCACCCCAGGCCTTCACGGAAACCCGTTGACTCGGTAAGAACCTCATGTAGGAAAGGTATGCTGTGTAAACAAAGGAAGTAGGCTTTGGTGAGCCTTTTAAGGCAGTCTCTGGTTTTAATTTCATCTGGATTAATTTAATCTCTCATTTGAATTCAGGGACTGAGAATATTTTATCATAGCTCTG \
+-g TTCACGGAAACCCGTTGACT \
+-e TTTCTGAGCAAAGAAGTAAGTTACATCGTGTCCAGCCGCAGAGAAGTAAAGGCAGAGAGCAGTGGGAAAAGCCATAGAGGCTGCCCTAGCCCTAGCCCCAGTGAGGTCAGAGTGGAAACATCGGCCATGGTTGATCCAAAAGGCAGCCACCCCAGGCCTTCACGGAAACCCGTTGGACTATAAGGACCACGACGGAGACTACAAGGATCATGATATTGATTACAAAGACGATGACGATAAGACTCGGTAAGAACCTCATGTAGGAAAGGTATGCTGTGTAAACAAAGGAAGTAGGCTTTGGTGAGCCTTTTAAGGCAGTCTCTGGTTTTAATTTCATCTGGATTAATTTAATCTCTCATTTGAATTCAGGGACTGAGAATATTTTATCATAGCTCTG \
+-d GACTATAAGGACCACGACGGAGACTACAAGGATCATGATATTGATTACAAAGACGATGACGATAAG \
+-n DBF4B-C;
 ```
 
 ##### Prime Editing (Substitution editing)
