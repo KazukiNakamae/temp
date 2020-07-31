@@ -178,7 +178,7 @@ We provide a detailed description of how to read them in the section of the MaCh
 
 #### 1. Set bash as default shell
 ```bash
-chsh -s /bin/tcsh;
+chsh -s /bin/bash;
 ```
 
 ### Install software
