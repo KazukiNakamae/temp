@@ -451,7 +451,7 @@ python MaChIAto/MaChIAto.py \
 -n CD40LG-KI1;
 ```
 
-##### Case of untreated sample for negative control (Opional)
+##### Case of untreated sample for negative control (Optional)
 
 ```bash:Example1
 python MaChIAto/MaChIAto.py \
@@ -483,7 +483,7 @@ python MaChIAto/MaChIAto.py \
 -n CD40LG-NC;
 ```
 
-##### Case of homology-based knock-in that is the different condition from the above method (Opional)
+##### Case of homology-based knock-in that is the different condition from the above method (Optional)
 
 ```bash:Example1
 python MaChIAto/MaChIAto.py \
@@ -667,7 +667,7 @@ GTTTGG \
 CCAAAC;
 ```
 
-##### Case of untreated sample for negative control (Opional)
+##### Case of untreated sample for negative control (Optional)
 
 ```bash:Example1
 Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
@@ -686,7 +686,7 @@ Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
 example/MaChIAto_Aligner_output;
 ```
 
-##### Case of homology-based knock-in that is the different condition from the above method (Opional)
+##### Case of homology-based knock-in that is the different condition from the above method (Optional)
 
 ```bash:Example1
 Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
