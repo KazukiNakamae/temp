@@ -74,11 +74,11 @@ python MaChIAto/MaChIAto.py \
 
 You can get the classification result of the editing. The result is visualized as the pie chart based on the ALL_dataframe.txt.
 
-We provide the detailed description how to read them in the section of the MaChIAtoClassifier result.
+We provide the detailed description how to read them in the section of the MaChIAtoClassifier output.
 
 # Quick Start (Optional)
 
-MaChIAto can profile and visualize the MaChIAto result using MaChIAto Aligner, MaChIAto Analyzer, and MaChIAto Reviewer. 
+MaChIAto can profile and visualize the MaChIAto output using MaChIAto Aligner, MaChIAto Analyzer, and MaChIAto Reviewer. 
 
 #### 5. Get local alignment and the mutation profiling using MaChIAto Aligner.
 
@@ -104,7 +104,7 @@ Please refer to the section of MaChIAtoAligner.
 
 You can get the local alignment of the editing. The result is visualized as the map.
 
-We provide a detailed description of how to read them in the section of the MaChIAtoAligner result.
+We provide a detailed description of how to read them in the section of the MaChIAtoAligner output.
 
 #### 7. Aggregate the multiple data.
 
@@ -113,7 +113,7 @@ If you have multiple data (n>3) to profile the characteristics, you should aggre
 ```bash
 source activate MaChIAto_Analyzer_env; # *You do not need to enter it again once you did it.
 python MaChIAto_Analyzer/collect_MaChIAto_data.py \
--i (the prefix of MaChIAto Classifier result) \
+-i (the prefix of MaChIAto Classifier output) \
 -o (output directory) \
 -ol (knock-out label) \
 -t (calculation target) \
@@ -147,7 +147,7 @@ If you want to use epigenomic context or other context, please see the section o
 
 You can get the correlation between the editing efficacy and the context. The result is visualized as the scatter plot.
 
-We provide a detailed description of how to read them in the section of the MaChIAtoAnalyzer result.
+We provide a detailed description of how to read them in the section of the MaChIAtoAnalyzer output.
 
 #### 10. Profile the mutation tendency.
 
@@ -155,8 +155,8 @@ We provide a detailed description of how to read them in the section of the MaCh
 ```bash
 source activate MaChIAto_Reviewer_env; # *You do not need to enter it again once you did it.
 Rscript MaChIAto_Reviewer/MaChIAtoReviewer.R \
-(the prefix of MaChIAto Classifier result) \
-(the prefix of MaChIAto Aligner result) \
+(the prefix of MaChIAto Classifier output) \
+(the prefix of MaChIAto Aligner output) \
 (directory of collect_MaChIAto_data.py) \
 (output directory);
 ```
@@ -167,9 +167,9 @@ conda deactivate;
 
 #### 11. Check the mutation profile.
 
-You can get the local alignment of the editing. The result is visualized as the bar plot and pie chart.
+You can get the mutation profile of the editing. The result is visualized as the bar plot and pie chart.
 
-We provide a detailed description of how to read them in the section of the MaChIAtoReviewer result.
+We provide a detailed description of how to read them in the section of the MaChIAtoReviewer output.
 
 
 # Preparation
@@ -381,65 +381,187 @@ python MaChIAto/MaChIAto.py \
 
 ### The example of the command
 
-##### Knock-out analysis
-```bash
-python /Volumes/databank2/temp/MaChIAto/MaChIAto/MaChIAto.py \
--m CRISPResso2 -ccf /Volumes/databank2/move_from_smgPC_1/CRISPResso2_output/CRISPResso_on_20190702171907_AAVS1-B/Alleles_frequency_table.zip \
--o /Volumes/databank2/200721_CRISPResso2_output_1.8.1 \
+##### Case of knock-out
+
+```bash:Example1
+python MaChIAto/MaChIAto.py \
+-m CRISPResso2 \
+-ccf example/data/CRISPResso_on_20190702171907_AAVS1-B/Alleles_frequency_table.zip \
+-o example/MaChIAto_Classifier_output \
 -a CAGGGGTCCGAGAGCTCAGCTAGTCTTCTTCCTCCAACCCGGGCCCCTATGTCCACTTCAGGACAGCATGTTTGCTGCCTCCAGGGATCCTGTGTCCCCGAGCTGGGACCACCTTATATTCCCAGGGCCGGTTAATGTGGCTCTGGTTCTGGGTACTTTTATCTGTCCCCTCCACCCCACAGTGGGGCCACTAGGGACAGGATTGGTGACAGAAAAGCCCCATCCTTAGGCCTCCTCCTTCCTAGTCTCCTGATATTGGGTCTAACCCCCACCTCCTGTTAGGCAGATTCCTTATCTGGTGACACACCCCCATTTCCTGGAGCCATCTCTCT \
 -g ACCCCACAGTGGGGCCACTA \
--n AAVS1-B;
+-n AAVS1-KO;
 ```
 
-##### Knock-in analysis
-```bash
-python /Volumes/databank2/temp/MaChIAto/MaChIAto/MaChIAto.py \
--m CRISPResso2 -ccf /Volumes/databank2/move_from_smgPC_1/CRISPResso2_output/CRISPResso_on_20190702174343_DBF4B-C/Alleles_frequency_table.zip \
--o /Volumes/databank2/200721_CRISPResso2_output_1.8.1 \
+```bash:Example2
+python MaChIAto/MaChIAto.py \
+-m CRISPResso2 \
+-ccf example/data/CRISPResso_on_20190702174222_DBF4B-B/Alleles_frequency_table.zip \
+-o example/MaChIAto_Classifier_output \
+-a TTTCTGAGCAAAGAAGTAAGTTACATCGTGTCCAGCCGCAGAGAAGTAAAGGCAGAGAGCAGTGGGAAAAGCCATAGAGGCTGCCCTAGCCCTAGCCCCAGTGAGGTCAGAGTGGAAACATCGGCCATGGTTGATCCAAAAGGCAGCCACCCCAGGCCTTCACGGAAACCCGTTGACTCGGTAAGAACCTCATGTAGGAAAGGTATGCTGTGTAAACAAAGGAAGTAGGCTTTGGTGAGCCTTTTAAGGCAGTCTCTGGTTTTAATTTCATCTGGATTAATTTAATCTCTCATTTGAATTCAGGGACTGAGAATATTTTATCATAGCTCTG \
+-g TTCACGGAAACCCGTTGACT \
+-n DBF4B-KO;
+```
+
+```bash:Example3
+python MaChIAto/MaChIAto.py \
+-m CRISPResso2 \
+-ccf example/data/CRISPResso_on_20190702185531_CD40LG-B/Alleles_frequency_table.zip \
+-o example/MaChIAto_Classifier_output \
+-a TGTAGAGGCAGATATCATTAGCTGTATTCTCCTTCCGAATGACATTTATCATATCCTTGTTATTCCAAAATAGATAGAAGATGAAAGGAATCTTCATGAAGATTTTGTATTCATGAAAACGATACAGAGATGCAACACAGGAGAAAGATCCTTATCCTTACTGAACTGTGAGGAGATTAAAAGCCAGTTTGAAGGCTTTGTGAAGGTAAGCAGCTTAATTACTGGTAAAAGTGTCATTGAAATATTTTACTACATTTGCTAGATCGGGAAACTGACAATGCCAATGTTTAAAGATTGGTTATAGACACAGACACACAGACACACACACACATAT \
+-g CTTATCCTTACTGAACTGTG \
+-n CD40LG-KO;
+```
+
+##### Case of homology-based knock-in
+
+```bash:Example1
+python MaChIAto/MaChIAto.py \
+-m CRISPResso2 \
+-ccf example/data/CRISPResso_on_20190702172008_AAVS1-C/Alleles_frequency_table.zip \
+-o example/MaChIAto_Classifier_output \
+-a CAGGGGTCCGAGAGCTCAGCTAGTCTTCTTCCTCCAACCCGGGCCCCTATGTCCACTTCAGGACAGCATGTTTGCTGCCTCCAGGGATCCTGTGTCCCCGAGCTGGGACCACCTTATATTCCCAGGGCCGGTTAATGTGGCTCTGGTTCTGGGTACTTTTATCTGTCCCCTCCACCCCACAGTGGGGCCACTAGGGACAGGATTGGTGACAGAAAAGCCCCATCCTTAGGCCTCCTCCTTCCTAGTCTCCTGATATTGGGTCTAACCCCCACCTCCTGTTAGGCAGATTCCTTATCTGGTGACACACCCCCATTTCCTGGAGCCATCTCTCT \
+-g ACCCCACAGTGGGGCCACTA \
+-e CAGGGGTCCGAGAGCTCAGCTAGTCTTCTTCCTCCAACCCGGGCCCCTATGTCCACTTCAGGACAGCATGTTTGCTGCCTCCAGGGATCCTGTGTCCCCGAGCTGGGACCACCTTATATTCCCAGGGCCGGTTAATGTGGCTCTGGTTCTGGGTACTTTTATCTGTCCCCTCCACCCCACAGTGGGGCCAGACTATAAGGACCACGACGGAGACTACAAGGATCATGATATTGATTACAAAGACGATGACGATAAGCTAGGGACAGGATTGGTGACAGAAAAGCCCCATCCTTAGGCCTCCTCCTTCCTAGTCTCCTGATATTGGGTCTAACCCCCACCTCCTGTTAGGCAGATTCCTTATCTGGTGACACACCCCCATTTCCTGGAGCCATCTCTCT \
+-d GACTATAAGGACCACGACGGAGACTACAAGGATCATGATATTGATTACAAAGACGATGACGATAAG \
+-n AAVS1-KI1;
+```
+
+```bash:Example2
+python MaChIAto/MaChIAto.py \
+-m CRISPResso2 \
+-ccf example/data/CRISPResso_on_20190702174343_DBF4B-C/Alleles_frequency_table.zip \
+-o example/MaChIAto_Classifier_output \
 -a TTTCTGAGCAAAGAAGTAAGTTACATCGTGTCCAGCCGCAGAGAAGTAAAGGCAGAGAGCAGTGGGAAAAGCCATAGAGGCTGCCCTAGCCCTAGCCCCAGTGAGGTCAGAGTGGAAACATCGGCCATGGTTGATCCAAAAGGCAGCCACCCCAGGCCTTCACGGAAACCCGTTGACTCGGTAAGAACCTCATGTAGGAAAGGTATGCTGTGTAAACAAAGGAAGTAGGCTTTGGTGAGCCTTTTAAGGCAGTCTCTGGTTTTAATTTCATCTGGATTAATTTAATCTCTCATTTGAATTCAGGGACTGAGAATATTTTATCATAGCTCTG \
 -g TTCACGGAAACCCGTTGACT \
 -e TTTCTGAGCAAAGAAGTAAGTTACATCGTGTCCAGCCGCAGAGAAGTAAAGGCAGAGAGCAGTGGGAAAAGCCATAGAGGCTGCCCTAGCCCTAGCCCCAGTGAGGTCAGAGTGGAAACATCGGCCATGGTTGATCCAAAAGGCAGCCACCCCAGGCCTTCACGGAAACCCGTTGGACTATAAGGACCACGACGGAGACTACAAGGATCATGATATTGATTACAAAGACGATGACGATAAGACTCGGTAAGAACCTCATGTAGGAAAGGTATGCTGTGTAAACAAAGGAAGTAGGCTTTGGTGAGCCTTTTAAGGCAGTCTCTGGTTTTAATTTCATCTGGATTAATTTAATCTCTCATTTGAATTCAGGGACTGAGAATATTTTATCATAGCTCTG \
 -d GACTATAAGGACCACGACGGAGACTACAAGGATCATGATATTGATTACAAAGACGATGACGATAAG \
--n DBF4B-C;
+-n DBF4B-KI1;
 ```
 
-##### Prime Editing (Substitution editing)
-```bash
-python /Volumes/databank2/temp/MaChIAto/MaChIAto/MaChIAto.py \
+```bash:Example3
+python MaChIAto/MaChIAto.py \
 -m CRISPResso2 \
--ccf /Volumes/databank2/PE/CRISPResso_on_SRR10287821/Alleles_frequency_table.zip \
--o /Volumes/databank2/PE/MaChIAto_1.8_output \
+-ccf example/data/CRISPResso_on_20190702185650_CD40LG-C/Alleles_frequency_table.zip \
+-o example/MaChIAto_Classifier_output \
+-a TGTAGAGGCAGATATCATTAGCTGTATTCTCCTTCCGAATGACATTTATCATATCCTTGTTATTCCAAAATAGATAGAAGATGAAAGGAATCTTCATGAAGATTTTGTATTCATGAAAACGATACAGAGATGCAACACAGGAGAAAGATCCTTATCCTTACTGAACTGTGAGGAGATTAAAAGCCAGTTTGAAGGCTTTGTGAAGGTAAGCAGCTTAATTACTGGTAAAAGTGTCATTGAAATATTTTACTACATTTGCTAGATCGGGAAACTGACAATGCCAATGTTTAAAGATTGGTTATAGACACAGACACACAGACACACACACACATAT \
+-g CTTATCCTTACTGAACTGTG \
+-e TGTAGAGGCAGATATCATTAGCTGTATTCTCCTTCCGAATGACATTTATCATATCCTTGTTATTCCAAAATAGATAGAAGATGAAAGGAATCTTCATGAAGATTTTGTATTCATGAAAACGATACAGAGATGCAACACAGGAGAAAGATCCTTATCCTTACTGAACTGACTATAAGGACCACGACGGAGACTACAAGGATCATGATATTGATTACAAAGACGATGACGATAAGGTGAGGAGATTAAAAGCCAGTTTGAAGGCTTTGTGAAGGTAAGCAGCTTAATTACTGGTAAAAGTGTCATTGAAATATTTTACTACATTTGCTAGATCGGGAAACTGACAATGCCAATGTTTAAAGATTGGTTATAGACACAGACACACAGACACACACACACATAT \
+-d GACTATAAGGACCACGACGGAGACTACAAGGATCATGATATTGATTACAAAGACGATGACGATAAG \
+-n CD40LG-KI1;
+```
+
+##### Case of untreated sample for negative control (Opional)
+
+```bash:Example1
+python MaChIAto/MaChIAto.py \
+-m CRISPResso2 \
+-ccf example/data/CRISPResso_on_20190702171854_AAVS1-A/Alleles_frequency_table.zip \
+-o example/MaChIAto_Classifier_output \
+-a CAGGGGTCCGAGAGCTCAGCTAGTCTTCTTCCTCCAACCCGGGCCCCTATGTCCACTTCAGGACAGCATGTTTGCTGCCTCCAGGGATCCTGTGTCCCCGAGCTGGGACCACCTTATATTCCCAGGGCCGGTTAATGTGGCTCTGGTTCTGGGTACTTTTATCTGTCCCCTCCACCCCACAGTGGGGCCACTAGGGACAGGATTGGTGACAGAAAAGCCCCATCCTTAGGCCTCCTCCTTCCTAGTCTCCTGATATTGGGTCTAACCCCCACCTCCTGTTAGGCAGATTCCTTATCTGGTGACACACCCCCATTTCCTGGAGCCATCTCTCT \
+-g ACCCCACAGTGGGGCCACTA \
+-n AAVS1-NC;
+```
+
+```bash:Example2
+python MaChIAto/MaChIAto.py \
+-m CRISPResso2 \
+-ccf example/data/CRISPResso_on_20190702174209_DBF4B-A/Alleles_frequency_table.zip \
+-o example/MaChIAto_Classifier_output \
+-a TTTCTGAGCAAAGAAGTAAGTTACATCGTGTCCAGCCGCAGAGAAGTAAAGGCAGAGAGCAGTGGGAAAAGCCATAGAGGCTGCCCTAGCCCTAGCCCCAGTGAGGTCAGAGTGGAAACATCGGCCATGGTTGATCCAAAAGGCAGCCACCCCAGGCCTTCACGGAAACCCGTTGACTCGGTAAGAACCTCATGTAGGAAAGGTATGCTGTGTAAACAAAGGAAGTAGGCTTTGGTGAGCCTTTTAAGGCAGTCTCTGGTTTTAATTTCATCTGGATTAATTTAATCTCTCATTTGAATTCAGGGACTGAGAATATTTTATCATAGCTCTG \
+-g TTCACGGAAACCCGTTGACT \
+-n DBF4B-NC;
+```
+
+```bash:Example3
+python MaChIAto/MaChIAto.py \
+-m CRISPResso2 \
+-ccf example/data/CRISPResso_on_20190702185510_CD40LG-A/Alleles_frequency_table.zip \
+-o example/MaChIAto_Classifier_output \
+-a TGTAGAGGCAGATATCATTAGCTGTATTCTCCTTCCGAATGACATTTATCATATCCTTGTTATTCCAAAATAGATAGAAGATGAAAGGAATCTTCATGAAGATTTTGTATTCATGAAAACGATACAGAGATGCAACACAGGAGAAAGATCCTTATCCTTACTGAACTGTGAGGAGATTAAAAGCCAGTTTGAAGGCTTTGTGAAGGTAAGCAGCTTAATTACTGGTAAAAGTGTCATTGAAATATTTTACTACATTTGCTAGATCGGGAAACTGACAATGCCAATGTTTAAAGATTGGTTATAGACACAGACACACAGACACACACACACATAT \
+-g CTTATCCTTACTGAACTGTG \
+-n CD40LG-NC;
+```
+
+##### Case of homology-based knock-in that is the different condition from the above method (Opional)
+
+```bash:Example1
+python MaChIAto/MaChIAto.py \
+-m CRISPResso2 \
+-ccf example/data/CRISPResso_on_20190702172115_AAVS1-D/Alleles_frequency_table.zip \
+-o example/MaChIAto_Classifier_output \
+-a CAGGGGTCCGAGAGCTCAGCTAGTCTTCTTCCTCCAACCCGGGCCCCTATGTCCACTTCAGGACAGCATGTTTGCTGCCTCCAGGGATCCTGTGTCCCCGAGCTGGGACCACCTTATATTCCCAGGGCCGGTTAATGTGGCTCTGGTTCTGGGTACTTTTATCTGTCCCCTCCACCCCACAGTGGGGCCACTAGGGACAGGATTGGTGACAGAAAAGCCCCATCCTTAGGCCTCCTCCTTCCTAGTCTCCTGATATTGGGTCTAACCCCCACCTCCTGTTAGGCAGATTCCTTATCTGGTGACACACCCCCATTTCCTGGAGCCATCTCTCT \
+-g ACCCCACAGTGGGGCCACTA \
+-e CAGGGGTCCGAGAGCTCAGCTAGTCTTCTTCCTCCAACCCGGGCCCCTATGTCCACTTCAGGACAGCATGTTTGCTGCCTCCAGGGATCCTGTGTCCCCGAGCTGGGACCACCTTATATTCCCAGGGCCGGTTAATGTGGCTCTGGTTCTGGGTACTTTTATCTGTCCCCTCCACCCCACAGTGGGGCCAGACTATAAGGACCACGACGGAGACTACAAGGATCATGATATTGATTACAAAGACGATGACGATAAGCTAGGGACAGGATTGGTGACAGAAAAGCCCCATCCTTAGGCCTCCTCCTTCCTAGTCTCCTGATATTGGGTCTAACCCCCACCTCCTGTTAGGCAGATTCCTTATCTGGTGACACACCCCCATTTCCTGGAGCCATCTCTCT \
+-d GACTATAAGGACCACGACGGAGACTACAAGGATCATGATATTGATTACAAAGACGATGACGATAAG \
+-n AAVS1-KI2;
+```
+
+```bash:Example2
+python MaChIAto/MaChIAto.py \
+-m CRISPResso2 \
+-ccf example/data/CRISPResso_on_20190702174513_DBF4B-D/Alleles_frequency_table.zip \
+-o example/MaChIAto_Classifier_output \
+-a TTTCTGAGCAAAGAAGTAAGTTACATCGTGTCCAGCCGCAGAGAAGTAAAGGCAGAGAGCAGTGGGAAAAGCCATAGAGGCTGCCCTAGCCCTAGCCCCAGTGAGGTCAGAGTGGAAACATCGGCCATGGTTGATCCAAAAGGCAGCCACCCCAGGCCTTCACGGAAACCCGTTGACTCGGTAAGAACCTCATGTAGGAAAGGTATGCTGTGTAAACAAAGGAAGTAGGCTTTGGTGAGCCTTTTAAGGCAGTCTCTGGTTTTAATTTCATCTGGATTAATTTAATCTCTCATTTGAATTCAGGGACTGAGAATATTTTATCATAGCTCTG \
+-g TTCACGGAAACCCGTTGACT \
+-e TTTCTGAGCAAAGAAGTAAGTTACATCGTGTCCAGCCGCAGAGAAGTAAAGGCAGAGAGCAGTGGGAAAAGCCATAGAGGCTGCCCTAGCCCTAGCCCCAGTGAGGTCAGAGTGGAAACATCGGCCATGGTTGATCCAAAAGGCAGCCACCCCAGGCCTTCACGGAAACCCGTTGGACTATAAGGACCACGACGGAGACTACAAGGATCATGATATTGATTACAAAGACGATGACGATAAGACTCGGTAAGAACCTCATGTAGGAAAGGTATGCTGTGTAAACAAAGGAAGTAGGCTTTGGTGAGCCTTTTAAGGCAGTCTCTGGTTTTAATTTCATCTGGATTAATTTAATCTCTCATTTGAATTCAGGGACTGAGAATATTTTATCATAGCTCTG \
+-d GACTATAAGGACCACGACGGAGACTACAAGGATCATGATATTGATTACAAAGACGATGACGATAAG \
+-n DBF4B-KI2;
+```
+
+```bash:Example3
+python MaChIAto/MaChIAto.py \
+-m CRISPResso2 \
+-ccf example/data/CRISPResso_on_20190702185815_CD40LG-D/Alleles_frequency_table.zip \
+-o example/MaChIAto_Classifier_output \
+-a TGTAGAGGCAGATATCATTAGCTGTATTCTCCTTCCGAATGACATTTATCATATCCTTGTTATTCCAAAATAGATAGAAGATGAAAGGAATCTTCATGAAGATTTTGTATTCATGAAAACGATACAGAGATGCAACACAGGAGAAAGATCCTTATCCTTACTGAACTGTGAGGAGATTAAAAGCCAGTTTGAAGGCTTTGTGAAGGTAAGCAGCTTAATTACTGGTAAAAGTGTCATTGAAATATTTTACTACATTTGCTAGATCGGGAAACTGACAATGCCAATGTTTAAAGATTGGTTATAGACACAGACACACAGACACACACACACATAT \
+-g CTTATCCTTACTGAACTGTG \
+-e TGTAGAGGCAGATATCATTAGCTGTATTCTCCTTCCGAATGACATTTATCATATCCTTGTTATTCCAAAATAGATAGAAGATGAAAGGAATCTTCATGAAGATTTTGTATTCATGAAAACGATACAGAGATGCAACACAGGAGAAAGATCCTTATCCTTACTGAACTGACTATAAGGACCACGACGGAGACTACAAGGATCATGATATTGATTACAAAGACGATGACGATAAGGTGAGGAGATTAAAAGCCAGTTTGAAGGCTTTGTGAAGGTAAGCAGCTTAATTACTGGTAAAAGTGTCATTGAAATATTTTACTACATTTGCTAGATCGGGAAACTGACAATGCCAATGTTTAAAGATTGGTTATAGACACAGACACACAGACACACACACACATAT \
+-d GACTATAAGGACCACGACGGAGACTACAAGGATCATGATATTGATTACAAAGACGATGACGATAAG \
+-n CD40LG-KI2;
+```
+
+##### Case of Prime Editing (Substitution editing)
+
+```bash
+python MaChIAto/MaChIAto.py \
+-m CRISPResso2 \
+-ccf example/data/CRISPResso_on_SRR10287821/Alleles_frequency_table.zip \
+-o example/MaChIAto_Classifier_output \
 -a acttggtgccaaattcttctcccctgggaagcatccctggacacttcccaaaggaccccagtcactccagcctgttggctgccgctcactttgatgtctgcaggccagatgagggctccagatggcacattgtcagagggacacactgtggcccctgtgcccagccctgggctctctgtacatgaagcaactccagtcccaaatatgtagctgtttgggaggtcagaaatagggggtccaggagcaaactccccccaccccctttccaaagcccattccctctttag \
 -g gatgtctgcaggccagatga \
 -e acttggtgccaaattcttctcccctgggaagcatccctggacacttcccaaaggaccccagtcactccagcctgttggctgccgctcactttgatgtctgcaggccagaAgagggctccagatggcacattgtcagagggacacactgtggcccctgtgcccagccctgggctctctgtacatgaagcaactccagtcccaaatatgtagctgtttgggaggtcagaaatagggggtccaggagcaaactccccccaccccctttccaaagcccattccctctttag \
 -lh 13 \
 -rh 22 \
 -cn 57 \
--n VEGFA_4e_1TtoA_rep1-C \
---primeediting_analysis
+-n VEGFA_1TtoA_rep1-PE \
+--primeediting_analysis;
 ```
 
-##### Prime Editing (Deletion editing)
+##### Case of Prime Editing (Deletion editing)
+
 ```bash
-python /Volumes/databank2/temp/MaChIAto/MaChIAto/MaChIAto.py \
--m CRISPResso2 -ccf /Volumes/databank2/PE/CRISPResso_on_SRR10287989/Alleles_frequency_table.zip \
--o /Volumes/databank2/PE/MaChIAto_1.8_output \
+python MaChIAto/MaChIAto.py \
+-m CRISPResso2 \
+-ccf example/data/CRISPResso_on_SRR10287989/Alleles_frequency_table.zip \
+-o example/MaChIAto_Classifier_output \
 -a ACACTCTTTCCCTACACGACGCTCTTCCGATCtttacacgtctcatatgccccttggcagtcatcttagtcattacctgaggtgttcgttgtaactcatataaactgagttcccatgttttgcttaatggttgagttccgtttgtctgcacagcctgagacattgctggaaataaagaagagagaaaaacaattttagtatttggaagggaagtgctatggtctgaatgtatgtgtcccaccaaaattcctacgt \
 -g gtcatcttagtcattacctg \
 -e ACACTCTTTCCCTACACGACGCTCTTCCGATCtttacacgtctcatatgccccttggcagtcatcttagtcattacGagTtgttcgttgtaactcatataaactgagttcccatgttttgcttaatggttgagttccgtttgtctgcacagcctgagacattgctggaaataaagaagagagaaaaacaattttagtatttggaagggaagtgctatggtctgaatgtatgtgtcccaccaaaattcctacgt \
 -lh 15 \
 -rh 12 \
 -cn 41 \
--n RNF2_4h_12CTdel_6GtoT-C \
+-n RNF2_12CTdel_6GtoT-PE \
 --primeediting_analysis;
 ```
 
-##### Prime Editing (Insertion editing)
+##### Case of Prime Editing (Insertion editing)
+
 ```bash
-python /Volumes/databank2/temp/MaChIAto/MaChIAto/MaChIAto.py \
+python MaChIAto/MaChIAto.py \
 -m CRISPResso2 \
--ccf /Volumes/databank2/PE/CRISPResso_on_SRR10287978/Alleles_frequency_table.zip \
--o /Volumes/databank2/PE/MaChIAto_1.8_output \
+-ccf example/data/CRISPResso_on_SRR10287978/Alleles_frequency_table.zip \
+-o example/MaChIAto_Classifier_output \
 -a ACACTCTTTCCCTACACGACGCTCTTCCGATCtttacacgtctcatatgccccttggcagtcatcttagtcattacctgaggtgttcgttgtaactcatataaactgagttcccatgttttgcttaatggttgagttccgtttgtctgcacagcctgagacattgctggaaataaagaagagagaaaaacaattttagtatttggaagggaagtgctatggtctgaatgtatgtgtcccaccaaaattcctacgt \
 -g gtcatcttagtcattacctg \
 -e ACACTCTTTCCCTACACGACGCTCTTCCGATCtttacacgtctcatatgccccttggcagtcatcttagtcattaccAAtggtgttcgttgtaactcatataaactgagttcccatgttttgcttaatggttgagttccgtttgtctgcacagcctgagacattgctggaaataaagaagagagaaaaacaattttagtatttggaagggaagtgctatggtctgaatgtatgtgtcccaccaaaattcctacgt \
@@ -447,13 +569,27 @@ python /Volumes/databank2/temp/MaChIAto/MaChIAto/MaChIAto.py \
 -lh 15 \
 -rh 14 \
 -cn 41 \
--n RNF2_4h_2AAins_34GAdel-C \
+-n RNF2_2AAins_34GAdel-PE \
 --primeediting_analysis;
 ```
 
-# MaChIAtoClassifier result
+# MaChIAtoClassifier output
 
-[Coming soon]
+The classification result is visualized in the "MaChIAto_alignment_pie_chart.png"
+"MaChIAto_alignment_pie_chart.png" has the following labels:
+- Unmodified: **The unedited amplicon sequence**
+- Perfect Editing: **The edited sequence** that a user intended to generate (e.g., precise knock-in sequence, expected substitution/deletion/insertion...)
+- Imperfect Editing: The sequence that is simular to "Perfect Editing" sequence. However, **the junction sequence is imperfect**. 
+*The class is specilized for the homology-based knock-in. In knock-out and Prime Editing, the "Imperfect Editing" reads can be condidered as just InDels.
+InDels: The sequence that has a trace of editing (e.g., deletion/insertion/frequent substitutions) around the target site.
+- Deletion: The InDel sequence whose length is **less** than that of the unedited amplicon sequence
+- Insertion: The InDel sequence whose length is **more** than that of the unedited amplicon sequence
+- Frequent substitutions: The InDel sequence whose length is **equal** to that of the unedited amplicon sequence
+UC: Unclear sequence that has the insufficient information to be recognized as the focusing sequence.
+- UC (Ambiguous Editing): There is the expected sequence (e.g., knock-in cassette and Reverse transcript). However, the information of the end of amplicon is unclear. For example, The edited reads, which do not have the site of complementary strand nicking, are classified into this class.
+- UC (Others): There is not enough sequence informaton for the classification. The unedited amplicon read with sequence errors and read amplified from the other locus can be classified into the this class.
+
+
 
 # MaChIAto Aligner
 
@@ -485,23 +621,123 @@ Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
 
 ### Example of the command
 
-##### Knock-out analysis / Prime Editing
-```bash
+##### Case of knock-out
+
+```bash:Example1
 Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
-MaChIAto_from_CRISPResso2_at_20200311211350_on_DBF4B-B \
-./;
+example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200722112127_on_AAVS1-KO \
+example/MaChIAto_Aligner_output;
 ```
 
-##### Knock-in analysis
-```bash
+```bash:Example2
 Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
-MaChIAto_from_CRISPResso2_at_20200311211350_on_DBF4B-C \
-./ \
-GTTTGG  \
+example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200723215418_on_DBF4B-KO \
+example/MaChIAto_Aligner_output;
+```
+
+```bash:Example3
+Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
+example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200723215432_on_CD40LG-KO \
+example/MaChIAto_Aligner_output;
+```
+
+##### Case of homology-based knock-in
+
+```bash:Example1
+Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
+example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200722112140_on_DBF4B-KI1 \
+example/MaChIAto_Aligner_output;
+GTTTGG \
 CCAAAC;
 ```
 
-# MaChIAtoAligner result
+```bash:Example2
+Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
+example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200723225210_on_AAVS1-KI1 \
+example/MaChIAto_Aligner_output;
+GTTTGG \
+CCAAAC;
+```
+
+```bash:Example3
+Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
+example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200723215508_on_CD40LG-KI1 \
+example/MaChIAto_Aligner_output;
+GTTTGG \
+CCAAAC;
+```
+
+##### Case of untreated sample for negative control (Opional)
+
+```bash:Example1
+Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
+example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200723215528_on_AAVS1-NC \
+example/MaChIAto_Aligner_output;
+```
+
+```bash:Example2
+Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
+example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200723215540_on_DBF4B-NC \
+example/MaChIAto_Aligner_output;
+```
+
+```bash:Example3
+Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
+example/MaChIAto_Aligner_output;
+```
+
+##### Case of homology-based knock-in that is the different condition from the above method (Opional)
+
+```bash:Example1
+Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
+example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200723225231_on_AAVS1-KI2 \
+example/MaChIAto_Aligner_output;
+GTTTGG \
+CCAAAC;
+```
+
+```bash:Example2
+Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
+example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200723215620_on_DBF4B-KI2 \
+example/MaChIAto_Aligner_output;
+GTTTGG \
+CCAAAC;
+```
+
+```bash:Example3
+Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
+example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200723215633_on_CD40LG-KI2 \
+example/MaChIAto_Aligner_output;
+GTTTGG \
+CCAAAC;
+```
+
+##### Case of Prime Editing (Substitution editing)
+
+```
+Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
+example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200722112157_on_VEGFA1TtoArep1-PE \
+example/MaChIAto_Aligner_output;
+```
+
+
+##### Case of Prime Editing (Deletion editing)
+
+```
+Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
+example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200722112511_on_RNF212CTdel6GtoT-PE \
+example/MaChIAto_Aligner_output;
+```
+
+##### Case of Prime Editing (Insertion editing)
+
+```
+Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
+example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200722112446_on_RNF22AAins34GAdel-PE \
+example/MaChIAto_Aligner_output;
+```
+
+# MaChIAtoAligner output
 
 [Coming soon]
 
@@ -511,7 +747,7 @@ CCAAAC;
 
 ### Parameter list
 
-**-i** or **--indir** {str}: input directory which includes the results of MaChIAto Classifier
+**-i** or **--indir** {str}: input directory which includes the outputs of MaChIAto Classifier
 
 **-o** or **--outdir** {str}: output directory
 
@@ -530,9 +766,10 @@ CCAAAC;
 ### Template command
 
 ##### Case of Double knock-in analysis (*ADVANCE: The analysis includes the comparison between two knock-in methods.)
+
 ```bash
 python MaChIAto_Analyzer/collect_MaChIAto_data.py \
--i (the prefix of MaChIAto Classifier result) \
+-i (the prefix of MaChIAto Classifier output) \
 -o (output directory) \
 -sc (scaffold sequence of sgRNA) \
 -ul (unmodified label) \
@@ -543,9 +780,10 @@ python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 ```
 
 ##### Case of Single knock-in analysis (*STANDARD)
+
 ```bash
 python MaChIAto_Analyzer/collect_MaChIAto_data.py \
--i (the prefix of MaChIAto Classifier result) \
+-i (the prefix of MaChIAto Classifier output) \
 -o (output directory) \
 -sc (scaffold sequence of sgRNA) \
 -ul (unmodified label) \
@@ -556,9 +794,10 @@ python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 ```
 
 ##### Case of Simple knock-in analysis (*SIMPLE: The analysis can be applied when there is no knock-out sample used as control.)
+
 ```bash
 python MaChIAto_Analyzer/collect_MaChIAto_data.py \
--i (the prefix of MaChIAto Classifier result) \
+-i (the prefix of MaChIAto Classifier output) \
 -o (output directory) \
 -sc (scaffold sequence of sgRNA) \
 -il (knock-out label) \
@@ -567,9 +806,10 @@ python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 ```
 
 ##### Case of Double knock-out analysis (*ADVANCE: The analysis includes the comparison between two knock-out methods.)
+
 ```bash
 python MaChIAto_Analyzer/collect_MaChIAto_data.py \
--i (the prefix of MaChIAto Classifier result) \
+-i (the prefix of MaChIAto Classifier output) \
 -o (output directory) \
 -sc (scaffold sequence of sgRNA) \
 -ul (unmodified label) \
@@ -579,9 +819,10 @@ python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 ```
 
 ##### Case of Single knock-out analysis (*STANDARD)
+
 ```bash
 python MaChIAto_Analyzer/collect_MaChIAto_data.py \
--i (the prefix of MaChIAto Classifier result) \
+-i (the prefix of MaChIAto Classifier output) \
 -o (output directory) \
 -sc (scaffold sequence of sgRNA) \
 -ul (unmodified label) \
@@ -596,47 +837,89 @@ python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 
 ##### Double knock-in analysis: PITCh and LoAD knock-in using MS2-tagged sgRNA/calculation target: both homology arm
 ```
-python /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.py \
--i ./MaChIAto2_v1.7.0_output_200311 \
--o ./20200311_MaChIAto2_data_analysis_mode1 \
+python MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i example/MaChIAto_Classifier_output \
+-o example/collections/Double_knockin_analysis \
 -sc gttttagagctaggccaacatgaggatcacccatgtctgcagggcctagcaagttaaaataaggctagtccgttatcaacttggccaacatgaggatcacccatgtctgcagggccaagtggcaccgagtcggtgc \
--ul A \
--ol B \
--il C D \
+-ul NC \
+-ol KO \
+-il KI1 KI2 \
 -t bmh \
---ignore_list ./20190916_MaChIAto2_data_analysis/ignore_list.csv;
+--ignore_list example/data/ignore_list_for_KOKI_analysis.csv;
+```
+
+##### Single knock-in analysis: PITCh using MS2-tagged sgRNA/calculation target: both homology arm
+
+```
+python MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i example/MaChIAto_Classifier_output \
+-o example/collections/Single_knockin_analysis \
+-sc gttttagagctaggccaacatgaggatcacccatgtctgcagggcctagcaagttaaaataaggctagtccgttatcaacttggccaacatgaggatcacccatgtctgcagggccaagtggcaccgagtcggtgc \
+-ul NC \
+-ol KO \
+-il KI1 \
+-t bmh \
+--ignore_list example/data/ignore_list_for_KOKI_analysis.csv;
+```
+
+##### Simple knock-in analysis: PITCh using MS2-tagged sgRNA/calculation target: both homology arm
+
+```
+python MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i example/MaChIAto_Classifier_output \
+-o example/collections/Simple_knockin_analysis \
+-sc gttttagagctaggccaacatgaggatcacccatgtctgcagggcctagcaagttaaaataaggctagtccgttatcaacttggccaacatgaggatcacccatgtctgcagggccaagtggcaccgagtcggtgc \
+-il KI1 \
+-t bmh \
+--ignore_list example/data/ignore_list_for_KOKI_analysis.csv;
+```
+
+##### Double knock-out analysis: MS2-tagged sgRNA/calculation target: protospacer
+
+```
+python MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i example/MaChIAto_Classifier_output \
+-o example/collections/Double_knockout_analysis \
+-sc gttttagagctaggccaacatgaggatcacccatgtctgcagggcctagcaagttaaaataaggctagtccgttatcaacttggccaacatgaggatcacccatgtctgcagggccaagtggcaccgagtcggtgc \
+-ul NC \
+-ol KO KI1 \
+-t protospacer \
+--ignore_list example/data/ignore_list_for_KOKI_analysis.csv;
 ```
 
 ##### Single knock-out analysis: knock-out using MS2-tagged sgRNA/calculation target: protospacer
+
 ```
-python /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.py \
--i ./MaChIAto2_v1.7.0_output_200311 \
--o ./20200311_MaChIAto2_data_analysis_mode1 \
+python MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i example/MaChIAto_Classifier_output \
+-o example/collections/Single_knockout_analysis \
 -sc gttttagagctaggccaacatgaggatcacccatgtctgcagggcctagcaagttaaaataaggctagtccgttatcaacttggccaacatgaggatcacccatgtctgcagggccaagtggcaccgagtcggtgc \
--ul A \
--ol B \
+-ol KO \
 -t protospacer \
---ignore_list ./20190916_MaChIAto2_data_analysis/ignore_list.csv;
+--ignore_list example/data/ignore_list_for_KOKI_analysis.csv;
 ```
 
 ##### Simple knock-in analysis: Prime Editing/calculation target: RT template (= edited right homology arm)
+
 ```bash
-python3 /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.py \
--i ./PE/MaChIAto_1.8_output \
--o ./PE/20200629_MaChIAto2_data_analysis \
--il C \
+python MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i example/MaChIAto_Classifier_output \
+-o example/collections/PrimeEditing_RT_analysis \
+-sc gttttagagctaggccaacatgaggatcacccatgtctgcagggcctagcaagttaaaataaggctagtccgttatcaacttggccaacatgaggatcacccatgtctgcagggccaagtggcaccgagtcggtgc \
+-il PE \
 -t ermh \
---ignore_list ./PE/20200629_MaChIAto2_data_analysis/ignore_list.csv;
+--ignore_list example/data/ignore_list_for_primeediting_analysis.csv;
 ```
 
-# 3) Simple knock-in analysis: Prime Editing/calculation target: protospacer
+##### Simple knock-in analysis: Prime Editing/calculation target: protospacer
 ```bash
-python3 /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/collect_MaChIAto_data.py \
--i ./PE/MaChIAto_1.8_output \
--o ./PE/20200629_MaChIAto2_data_analysis \
--il C \
--t ermh \
--t protospacer;
+python MaChIAto_Analyzer/collect_MaChIAto_data.py \
+-i example/MaChIAto_Classifier_output \
+-o example/collections/PrimeEditing_protospacer_analysis \
+-sc gttttagagctaggccaacatgaggatcacccatgtctgcagggcctagcaagttaaaataaggctagtccgttatcaacttggccaacatgaggatcacccatgtctgcagggccaagtggcaccgagtcggtgc \
+-il PE \
+-t protospacer \
+--ignore_list example/data/ignore_list_for_primeediting_analysis.csv;
 ```
 
 
@@ -668,27 +951,95 @@ Rscript MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
 
 ### Example of the command
 
-##### Double knock-in analysis: PITCh and LoAD knock-in
+##### Double knock-in analysis: PITCh and LoAD knock-in using MS2-tagged sgRNA/calculation target: both homology arm
+
 ```bash
 Rscript MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
-./20200311_MaChIAto2_data_analysis_mode1 \
-./MaChIAtoAnalyzer_beta1.6_output \
+example/collections/Double_knockin_analysis \
+example/MaChIAto_Analyzer_output \
 InDelphi \
-./extra_table/bmh_extra_data_InDelphi.csv \
+example/data/bmh_extra_data_InDelphi.csv \
 Accessibility \
-./extra_table/bmh_extra_data_accessibility.csv \
+example/data/bmh_extra_data_accessibility.csv \
 Genome_Property \
-./extra_table/bmh_extra_data_genomeprop.csv;
+example/data/bmh_extra_data_genomeprop.csv;
 ```
 
-##### Prime Editing
+##### Single knock-in analysis: PITCh using MS2-tagged sgRNA/calculation target: both homology arm
+
 ```bash
-Rscript /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
-./PE/20200629_MaChIAto2_data_analysis \
-./PE/MaChIAtoAnalyzer_beta1.6_1.8_output;
+Rscript MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
+example/collections/Single_knockin_analysis \
+example/MaChIAto_Analyzer_output \
+InDelphi \
+example/data/bmh_extra_data_InDelphi.csv \
+Accessibility \
+example/data/bmh_extra_data_accessibility.csv \
+Genome_Property \
+example/data/bmh_extra_data_genomeprop.csv;
 ```
 
-# MaChIAtoAnalyzer result
+##### Simple knock-in analysis: PITCh using MS2-tagged sgRNA/calculation target: both homology arm
+
+```bash
+Rscript MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
+example/collections/Simple_knockin_analysis \
+example/MaChIAto_Analyzer_output \
+InDelphi \
+example/data/bmh_extra_data_InDelphi.csv \
+Accessibility \
+example/data/bmh_extra_data_accessibility.csv \
+Genome_Property \
+example/data/bmh_extra_data_genomeprop.csv;
+```
+
+##### Double knock-out analysis: MS2-tagged sgRNA/calculation target: protospacer
+
+```bash
+Rscript MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
+example/collections/Double_knockout_analysis \
+example/MaChIAto_Analyzer_output \
+InDelphi \
+example/data/bmh_extra_data_InDelphi.csv \
+Accessibility \
+example/data/bmh_extra_data_accessibility.csv \
+Genome_Property \
+example/data/bmh_extra_data_genomeprop.csv;
+```
+
+##### Single knock-out analysis: knock-out using MS2-tagged sgRNA/calculation target: protospacer
+
+```bash
+Rscript MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
+example/collections/Single_knockout_analysis \
+example/MaChIAto_Analyzer_output \
+InDelphi \
+example/data/bmh_extra_data_InDelphi.csv \
+Accessibility \
+example/data/bmh_extra_data_accessibility.csv \
+Genome_Property \
+example/data/bmh_extra_data_genomeprop.csv;
+```
+
+##### Simple knock-in analysis: Prime Editing/calculation target: RT template (= edited right homology arm)
+
+```bash
+Rscript MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
+example/collections/PrimeEditing_RT_analysis \
+example/MaChIAto_Analyzer_output \
+example/data/bmh_extra_data_genomeprop.csv;
+```
+
+##### Simple knock-in analysis: Prime Editing/calculation target: protospacer
+
+```bash
+Rscript MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
+example/collections/PrimeEditing_protospacer_analysis \
+example/MaChIAto_Analyzer_output \
+example/data/bmh_extra_data_genomeprop.csv;
+```
+
+# MaChIAtoAnalyzer output
 
 [Coming soon]
 
@@ -710,25 +1061,77 @@ Rscript MaChIAto_Reviewer/MaChIAtoReviewer.R \
 
 ### Example of the command
 
-##### Double knock-in analysis: PITCh and LoAD knock-in
+##### Double knock-in analysis: PITCh and LoAD knock-in using MS2-tagged sgRNA/calculation target: both homology arm
+
 ```bash
-Rscript /Volumes/databank2/temp/MaChIAto/MaChIAto_Reviewer/MaChIAtoReviewer.R \
-./MaChIAto2_v1.7.0_output_200311 \
-./MaChIAtoAlignerv14_output_200501_from_MaChIAto2_v1.7.0_output_200311 \
-./20200311_MaChIAto2_data_analysis_mode1 \
-./MaChIAtoReviewer_beta2.4_output_200610_from_MaChIAto2_v1.7.0_output_200311;
+Rscript MaChIAto_Reviewer/MaChIAtoReviewer.R \
+example/MaChIAto_Classifier_output \
+example/MaChIAto_Aligner_output \
+example/collections/Double_knockin_analysis \
+example/MaChIAto_Reviewer_output;
 ```
 
-##### Prime Editing
+##### Single knock-in analysis: PITCh using MS2-tagged sgRNA/calculation target: both homology arm
+
 ```bash
-Rscript /Volumes/databank2/temp/MaChIAto/MaChIAto_Reviewer/MaChIAtoReviewer.R \
-./PE/MaChIAto_1.8_output \
-./PE/MaChIAtoAligner_1.4_1.8_output \
-./PE/20200629_MaChIAto2_data_analysis \
-./PE/MaChIAtoReviewer_beta2.5_1.4_1.8_output;
+Rscript MaChIAto_Reviewer/MaChIAtoReviewer.R \
+example/MaChIAto_Classifier_output \
+example/MaChIAto_Aligner_output \
+example/collections/Single_knockin_analysis \
+example/MaChIAto_Reviewer_output;
 ```
 
-# MaChIAtoReviewer result
+##### Simple knock-in analysis: PITCh using MS2-tagged sgRNA/calculation target: both homology arm
+
+```bash
+Rscript MaChIAto_Reviewer/MaChIAtoReviewer.R \
+example/MaChIAto_Classifier_output \
+example/MaChIAto_Aligner_output \
+example/collections/Simple_knockin_analysis \
+example/MaChIAto_Reviewer_output;
+```
+
+##### Double knock-out analysis: MS2-tagged sgRNA/calculation target: protospacer
+
+```bash
+Rscript MaChIAto_Reviewer/MaChIAtoReviewer.R \
+example/MaChIAto_Classifier_output \
+example/MaChIAto_Aligner_output \
+example/collections/Double_knockout_analysis \
+example/MaChIAto_Reviewer_output;
+```
+
+##### Single knock-out analysis: knock-out using MS2-tagged sgRNA/calculation target: protospacer
+
+```bash
+Rscript MaChIAto_Reviewer/MaChIAtoReviewer.R \
+example/MaChIAto_Classifier_output \
+example/MaChIAto_Aligner_output \
+example/collections/Single_knockout_analysis \
+example/MaChIAto_Reviewer_output;
+```
+
+##### Simple knock-in analysis: Prime Editing/calculation target: RT template (= edited right homology arm)
+
+```bash
+Rscript MaChIAto_Reviewer/MaChIAtoReviewer.R \
+example/MaChIAto_Classifier_output \
+example/MaChIAto_Aligner_output \
+example/collections/PrimeEditing_RT_analysis \
+example/MaChIAto_Reviewer_output;
+```
+
+##### Simple knock-in analysis: Prime Editing/calculation target: protospacer
+
+```bash
+Rscript MaChIAto_Reviewer/MaChIAtoReviewer.R \
+example/MaChIAto_Classifier_output \
+example/MaChIAto_Aligner_output \
+example/collections/PrimeEditing_protospacer_analysis \
+example/MaChIAto_Reviewer_output;
+```
+
+# MaChIAtoReviewer output
 
 [Coming soon]
 
