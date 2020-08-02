@@ -1024,8 +1024,7 @@ example/data/bmh_extra_data_genomeprop.csv;
 ```bash
 Rscript MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
 example/collections/PrimeEditing_RT_analysis \
-example/MaChIAto_Analyzer_output \
-example/data/bmh_extra_data_genomeprop.csv;
+example/MaChIAto_Analyzer_output;
 ```
 
 ##### Simple knock-in analysis: Prime Editing/calculation target: protospacer
@@ -1033,8 +1032,7 @@ example/data/bmh_extra_data_genomeprop.csv;
 ```bash
 Rscript MaChIAto_Analyzer/MaChIAtoAnalyzer.R \
 example/collections/PrimeEditing_protospacer_analysis \
-example/MaChIAto_Analyzer_output \
-example/data/bmh_extra_data_genomeprop.csv;
+example/MaChIAto_Analyzer_output;
 ```
 
 # MaChIAtoAnalyzer output
