@@ -209,8 +209,6 @@ conda deactivate;
 
 #### 2. Environment for MaChIAtoAligner
 ```bash
-cd /Volumes/databank2;
-conda update -n base -c defaults conda;
 conda create --name MaChIAto_Aligner_env;
 source activate MaChIAto_Aligner_env;
 conda install -c bioconda python=3.8 bwa=0.7.17 samtools=1.9;
@@ -646,7 +644,7 @@ example/MaChIAto_Aligner_output;
 ```bash:Example1
 Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
 example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200722112140_on_DBF4B-KI1 \
-example/MaChIAto_Aligner_output;
+example/MaChIAto_Aligner_output \
 GTTTGG \
 CCAAAC;
 ```
@@ -654,7 +652,7 @@ CCAAAC;
 ```bash:Example2
 Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
 example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200723225210_on_AAVS1-KI1 \
-example/MaChIAto_Aligner_output;
+example/MaChIAto_Aligner_output \
 GTTTGG \
 CCAAAC;
 ```
@@ -662,7 +660,7 @@ CCAAAC;
 ```bash:Example3
 Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
 example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200723215508_on_CD40LG-KI1 \
-example/MaChIAto_Aligner_output;
+example/MaChIAto_Aligner_output \
 GTTTGG \
 CCAAAC;
 ```
@@ -691,7 +689,7 @@ example/MaChIAto_Aligner_output;
 ```bash:Example1
 Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
 example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200723225231_on_AAVS1-KI2 \
-example/MaChIAto_Aligner_output;
+example/MaChIAto_Aligner_output \
 GTTTGG \
 CCAAAC;
 ```
@@ -699,7 +697,7 @@ CCAAAC;
 ```bash:Example2
 Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
 example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200723215620_on_DBF4B-KI2 \
-example/MaChIAto_Aligner_output;
+example/MaChIAto_Aligner_output \
 GTTTGG \
 CCAAAC;
 ```
@@ -707,7 +705,7 @@ CCAAAC;
 ```bash:Example3
 Rscript MaChIAto_Aligner/MaChIAtoAligner.R \
 example/MaChIAto_Classifier_output/MaChIAto_from_CRISPResso2_at_20200723215633_on_CD40LG-KI2 \
-example/MaChIAto_Aligner_output;
+example/MaChIAto_Aligner_output \
 GTTTGG \
 CCAAAC;
 ```
@@ -753,9 +751,9 @@ example/MaChIAto_Aligner_output;
 
 **-ul** or **--untreated_label** {str}: untreated label (This must be one.)' (default: "machiato_dummy_sample") (optional)
 
-**-ol** or **--knock_out_label** {str}: negative control label' (default: []) (optional)
+**-ol** or **--knock_out_label** {str}: knock-out label' (default: []) (optional)
 
-**-il** or **--knock_in_label** {str}: knock-in_label' (default: []) (optional)
+**-il** or **--knock_in_label** {str}: knock-in label' (default: []) (optional)
 
 **-sc** or **--scaffold_seq** {str}: scaffold sequence of sgRNA (default: "gttttagagctagaaatagcaagttaaaataaggctagtccgttatcaacttgaaaaagtggcaccgagtcggtgc") (optional)
 
@@ -772,9 +770,9 @@ python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 -i (the prefix of MaChIAto Classifier output) \
 -o (output directory) \
 -sc (scaffold sequence of sgRNA) \
--ul (unmodified label) \
+-ul (untreated label) \
 -ol (knock-out label) \
--il (knock-out label 1) (knock-out label 2) \
+-il (knock-in label 1) (knock-in label 2) \
 -t (calculation target) \
 --ignore_list (list of samples ignored);
 ```
@@ -786,9 +784,9 @@ python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 -i (the prefix of MaChIAto Classifier output) \
 -o (output directory) \
 -sc (scaffold sequence of sgRNA) \
--ul (unmodified label) \
+-ul (untreated label) \
 -ol (knock-out label) \
--il (knock-out label) \
+-il (knock-in label) \
 -t (calculation target) \
 --ignore_list (list of samples ignored);
 ```
@@ -800,7 +798,7 @@ python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 -i (the prefix of MaChIAto Classifier output) \
 -o (output directory) \
 -sc (scaffold sequence of sgRNA) \
--il (knock-out label) \
+-il (knock-in label) \
 -t (calculation target) \
 --ignore_list (list of samples ignored);
 ```
@@ -812,7 +810,7 @@ python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 -i (the prefix of MaChIAto Classifier output) \
 -o (output directory) \
 -sc (scaffold sequence of sgRNA) \
--ul (unmodified label) \
+-ul (untreated label) \
 -ol (knock-out label 1) (knock-out label 2) \
 -t (calculation target) \
 --ignore_list (list of samples ignored);
@@ -825,13 +823,13 @@ python MaChIAto_Analyzer/collect_MaChIAto_data.py \
 -i (the prefix of MaChIAto Classifier output) \
 -o (output directory) \
 -sc (scaffold sequence of sgRNA) \
--ul (unmodified label) \
+-ul (untreated label) \
 -ol (knock-out label) \
 -t (calculation target) \
 --ignore_list (list of samples ignored);
 ```
 
-*If you do not enter "-ul (unmodified label)", the process can work. However, some filtering process will be skipped.
+*If you do not enter "-ul (untreated label)", the process can work. However, some filtering process will be skipped.
 
 ### Example of the command
 
