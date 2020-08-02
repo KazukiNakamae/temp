@@ -46,8 +46,8 @@ python MaChIAto/MaChIAto.py \
 -m CRISPResso2 \
 -ccf (Alleles_frequency_table.zip of the CRISPResso2 output) \
 -o (output directory) \
--a (wt amplicon sequence)\
--g (protospaser sequence)\
+-a (wt amplicon sequence) \
+-g (protospaser sequence) \
 (other parameters);
 ```
 
@@ -64,7 +64,7 @@ The example is for the knock-out analysis.
 python MaChIAto/MaChIAto.py \
 -ccf (Alleles_frequency_table.zip of the CRISPResso2 output) \
 -o (output directory) \
--a (wt amplicon sequence)\
+-a (wt amplicon sequence) \
 -g (protospaser sequence);
 ```
 
@@ -321,7 +321,7 @@ python MaChIAto/MaChIAto.py \
 -m CRISPResso2 \
 -ccf (Alleles_frequency_table.zip of the CRISPResso2 output) \
 -o (output directory) \
--a (wt amplicon sequence)\
+-a (wt amplicon sequence) \
 -g (protospaser sequence) \
 -e (expected editing amplicon seqeunce) \
 -d (donor insert sequence) \
@@ -336,7 +336,7 @@ python MaChIAto/MaChIAto.py \
 -m CRISPResso2 \
 -ccf (Alleles_frequency_table.zip of the CRISPResso2 output) \
 -o (output directory) \
--a (wt amplicon sequence)\
+-a (wt amplicon sequence) \
 -g (protospaser sequence) \
 -e (expected editing amplicon seqeunce) \
 -lh (length of prime binding site) \
@@ -352,7 +352,7 @@ python MaChIAto/MaChIAto.py \
 -m CRISPResso2 \
 -ccf (Alleles_frequency_table.zip of the CRISPResso2 output) \
 -o (output directory) \
--a (wt amplicon sequence)\
+-a (wt amplicon sequence) \
 -g (protospaser sequence) \
 -e (expected editing amplicon seqeunce) \
 -d (donor insert sequence) \
@@ -370,7 +370,7 @@ python MaChIAto/MaChIAto.py \
 -m CRISPResso \
 -cf (Alleles_frequency_table.txt of the CRISPResso output) \
 -o (output directory) \
--a (wt amplicon sequence)\
+-a (wt amplicon sequence) \
 -g (protospaser sequence) \
 -n (sample name)-(label name);
 ```
