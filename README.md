@@ -221,6 +221,7 @@ conda create --name MaChIAto_Analyzer_env;
 source activate MaChIAto_Analyzer_env;
 conda install -c anaconda python=3.8 wget;
 conda install -c bioconda emboss;
+conda install -c bioconda oligoarrayaux;
 pip install --upgrade pip;
 pip install numpy regex tqdm pandas;
 conda deactivate;
@@ -230,33 +231,6 @@ conda deactivate;
 ```bash
 conda create -n MaChIAto_Reviewer_env --clone MaChIAto_Aligner_env;
 source activate MaChIAto_Reviewer_env;
-conda deactivate;
-```
-
-### Install OligoArrayAux
-
-#### 1. Change the current directory
-```bash
-WORKING_DIRECTORY=$PWD;
-cd /Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer;
-```
-
-#### 2. Download source files for MacOSX
-```bash
-source activate MaChIAto_Analyzer_env;
-# For Mac
-wget http://unafold.rna.albany.edu/cgi-bin/OligoArrayAux-download.cgi?oligoarrayaux-3.8.tar.gz;
-tar zxvf ./OligoArrayAux-download.cgi?oligoarrayaux-3.8.tar.gz;
-# Linux user can download the binary version intead: http://unafold.rna.albany.edu/?q=DINAMelt/OligoArrayAux
-```
-
-#### 3. Make the binary files of OligoArrayAux
-```bash
-cd oligoarrayaux-3.8;
-./configure --prefix=/Volumes/databank2/temp/MaChIAto/MaChIAto_Analyzer;
-make;
-make install;
-cd $WORKING_DIRECTORY
 conda deactivate;
 ```
 
